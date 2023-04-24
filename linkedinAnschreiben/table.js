@@ -168,11 +168,11 @@ const displayMessage=(message,country) => {
 
     console.log(country);
 
-    if((country !== 'Deutschland')&&(country !== 'Oesterreich')&&(country != 'Schweiz')){
+    /*if((country !== 'Deutschland')&&(country !== 'Oesterreich')&&(country != 'Schweiz')){
         return translateText(message);
-    }else{
+    }else{*/
         return message;
-    }
+    //}
 
 }
 
