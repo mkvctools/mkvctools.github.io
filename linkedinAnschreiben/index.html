@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV to Message Konverter</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+      
 
 
 </head>
@@ -17,20 +19,14 @@
 		<input type="file" id="csvFile" name="csvFile">
 		<button class="gen-button"type="button" onclick="showData()">Show Data</button>
 	</form> 
- 
-    <p>CSV to Linkedin Message Converter</p>
+    <p class="tool-title">CSV to Linkedin Message Converter</p>
+
     </nav>
     </header>   
-
         <div class="table-container">
         </div>
 
 	<div id="output"></div>
-
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-      </head>
-      
     <script src="table.js"></script>
 </body>
 </html> 

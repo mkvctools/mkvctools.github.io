@@ -7,13 +7,18 @@
 body{
     background: linear-gradient(90deg,#fefefe,white);
     color: black;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
 }
 
 
 /*--------- Heading --------- */
 header{
-    background-color: #eeeeee;
-    box-shadow: rgba(0,0,0,0.2) 0 10px 20px;
+    background-color: rgb(255, 223, 208);
+    box-shadow: rgba(0,0,0,0.2) 0 4px 20px;
+    font-weight: 500;
+    position: fixed;
+    width: 100%;
 }
 
 nav {
@@ -22,6 +27,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 0 100px;
+    font-weight: 400;
 }
 
 nav>form{
@@ -31,72 +37,69 @@ nav>form{
 }
 
 .gen-button{
-    width: 100px !important;
-    height: 50px !important;
+    width: 150px !important;
+    height: 40px !important;
     border: none;
     color: white;
-    background: linear-gradient(90deg,#f95,rgb(231, 101, 15));
+    background: linear-gradient(90deg,rgb(248, 157, 96),rgb(231, 101, 15));
     border-radius: 4px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.1s ease-in-out;
     height: 90%;
 }
 
 .gen-button:hover{
     cursor: pointer;
-    background: linear-gradient(90deg,#02025b,#03142b);
+    transform: scale(1.1);
     border: none;
     color: white;
-    transition: all 0.5s ease-in-out;
+
 }
 
 
 input[type="file"]::-moz-file-upload-button
 {
     border: 2px solid black;
-
     color: black;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+
   }
 input[type="file"]::file-selector-button
 {
     border: 2px solid black;
     color: black;
-
+    background-color: white;
+    height: 30px;
+    width: 150px;
+    margin: 0 5px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
  
 input[type="file"]::file-selector-button:hover {
-    background: linear-gradient(90deg,#02025b,#03142b);
-    color: white;
-    color: white;
-
-    border: none;
-    border-radius: 4px;
+    transform: scale(1.05);
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    border: 2px solid black;
+    font-weight: 500;
+
 
   }
 
   input[type="file"]::-moz-file-upload-button:hover, .gen-button:hover{
-    background: linear-gradient(90deg,#02025b,#03142b);
-    color: white;
-
-    border: none;
-    border-radius: 4px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+
   }
 
 
-
+/* ------ Tabelle * ----- */
 
 
 table{
-    width: 90%;
+    width: 80%;
+    margin-top: 60px;
+    box-shadow: rgba(0,0,0,0.2) 0 10px 20x;
 }
 
 .table-container{
@@ -104,50 +107,111 @@ table{
     justify-content: center;
     align-items: center;
 }
+thead{
+    /*background: linear-gradient(90deg,#02025b,#03142b); */
+    background-color: white;
+    color: black;
+    font-weight: 400;
+    height: 60px
+}
+
+.copy-message{
+    background: linear-gradient(90deg, rgb(248, 157, 96),rgb(231, 101, 15));
+    color: white
+}
+
+.search-linked-in{
+
+}
+
+
+
+thead>tr>td{
+    text-align: center;
+    padding: 0 20px;
+}
 
 table>tr{
     width: 100%;
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
-    padding: 10px 0px;
+    padding: 5px 10px;
     margin: 20px;
     height: 50px;
 }
 
 tbody>tr{
+    font-family:Georgia, 'Times New Roman', Times, serif;
     border: 1px solid black;
     height: 50px;
     margin-top: 200px !important;
+    border-bottom: 20px solid black;
+ 
+}
+
+tbody>tr:nth-child(odd){
+    background-color: rgb(255, 223, 208);
 }
 
 
- 
+
+
+tbody>tr>td{
+    text-align: center;
+    padding: 5px;
+}
+.message-content{
+    text-align: justify;
+    margin: 0 20px;
+}
+
+.search-linked-in{
+    width: 150px;
+    color: white;
+    background: linear-gradient(90deg,#02025b,#03142b)
+}
 .fonds-head{
     width: 100px;
 }
 
 .country-head{
-    width: calc(fit-content + 50px);
+    width: calc(100px + 50px);
 
 }
 
-
-/* ----- WP-Bakery Stuff ------- */
-
-.l-header.pos_static.bg_transparent ~ .l-main > .l-section:first-of-type > .l-section-h{
-    padding-top: 60px !important;
-    
+.copy-btn, .search-btn{
+    width: 90%;
+    height: 30px;
 }
 
-
-
-.l-section.height_medium{
-    padding-left: 0;
-    padding-right: 0;
-
-
+.search-btn{
+    background: linear-gradient(90deg,#02025b,#03142b);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: #02025b 0 2px 3px;
+    transition: all 0.1s ease-in-out;
 }
-    .l-section:first-of-type > .l-section-h{
-    padding-top:60px !important;
+
+.copy-btn{
+    background: linear-gradient(90deg,rgb(248, 157, 96),rgb(231, 101, 15));
+    color: white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: rgba(248, 157, 96) 0 2px 3px;
+    transition: all 0.1s ease-in-out;
+}
+
+.search-btn:hover,.copy-btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+tbody>tr:hover{
+    background-color: rgb(255, 214, 186)
+}
+
+.copied{
+    background-color: lightgreen !important;
 }

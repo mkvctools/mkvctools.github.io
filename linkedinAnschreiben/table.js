@@ -3,6 +3,8 @@ const isEmpty = "";
 const apiKey = "88b5e183-9fe6-4872-d47c-8a505acdc665:fx";
 const authKey = '88b5e183-9fe6-4872-d47c-8a505acdc665:fx';
 const targetLang = 'EN';
+const messageArray = [];
+let j = 0;
 
 let copyBtn = document.querySelectorAll('.copy-btn');
 
@@ -45,9 +47,9 @@ const renderTable = async (data)=>{
             <td class="fonds-head">Fonds</td>
             <td class="startup-head">Startup</td>
             <td class="country-head">Land</td>
-            <td class="">Vorname</td>
-            <td class="">Nachname</td>
-            <td class="search-linked">Name Kopieren</td>
+            <td class="first-name">Vorname</td>
+            <td class="last-name">Nachname</td>
+            <td class="search-linked-in">Finde LinkedIN</td>
             <td class="message">Message</td>
             <td class="copy-message">Nachricht Kopieren</td>
         </tr>
@@ -59,57 +61,63 @@ const renderTable = async (data)=>{
 
     for(let i = 0;i<data.length;i++){
 
+        console.log(j);
+
         if(data[i].firstName1 != isEmpty){
 
         const correctMessage = await displayMessage(genMessage(data[i].firstName1,data[i].Startup,data[i].Fonds),data[i].country)
-        
-        html+=`<tr>
+        html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
             <td>${data[i].country}</td>
             <td>${data[i].firstName1}</td>
             <td>${data[i].lastName1}</td>
             <td><button class="search-btn" onclick="searchLinkedin('${data[i].firstName1}','${data[i].lastName1}')">Linkedin Suchen</button></td>
-            <td>${correctMessage}</td>
-            <td><button class="cpy-btn" onclick="${copyMessage(correctMessage)}")>Kopieren</button></td>
+            <td class="message-content" id="td${i}">${correctMessage}</td>
+            <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td>
         </tr>`
+                j+=1;
     }else{}
        if(data[i].firstName2 !=isEmpty){
+
         const correctMessage = await displayMessage(genMessage(data[i].firstName2,data[i].Startup,data[i].Fonds),data[i].country)
-            html+=`<tr>
+            html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
             <td>${data[i].country}</td>
             <td>${data[i].firstName2}</td>
             <td>${data[i].lastName2}</td>
             <td><button class="search-btn" onclick="searchLinkedin('${data[i].firstName2}','${data[i].lastName2}')">Linkedin Suchen</button></td>
-            <td>${correctMessage}</td>
-            <td><button class="cpy-btn" onclick="${copyMessage(correctMessage)}">Kopieren</button></td></r>`
+            <td class="message-content">${correctMessage}</td>
+            <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td></r>`
+            j+=1;
         }else{}
         if(data[i].firstName3 !=isEmpty){
             const correctMessage = await displayMessage(genMessage(data[i].firstName3,data[i].Startup,data[i].Fonds),data[i].country)
-            html+=`<tr>
+            html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
             <td>${data[i].country}</td>
             <td>${data[i].firstName3}</td>
             <td>${data[i].lastName3}</td>
             <td><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')">Linkedin Suchen</button></td>
-            <td>${correctMessage}</td>
-            <td><button class="copy-btn" onclick="${copyMessage(correctMessage)}">Kopieren</button></td></tr>`
+            <td class="message-content" >${correctMessage}</td>
+            <td><button class="copy-btn" id="copy-btn${j}"  onclick="copyMessage('${correctMessage}')">Kopieren</button></td></tr>`
+            j+=1;
         }else{}
         if(data[i].firstName4 !=isEmpty){
             const correctMessage = await displayMessage(genMessage(data[i].firstName4,data[i].Startup,data[i].Fonds),data[i].country)
 
-            html+=`<tr>
+            html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
             <td>${data[i].country}</td>
             <td>${data[i].firstName4}</td>
             <td>${data[i].lastName4}</td>
             <td><button class="search-btn" onclick="searchLinkedin('${data[i].firstName4}','${data[i].lastName4}')">Linkedin Suchen</button></td>
-            <td>${correctMessage}</td>
-            <td><button class="cpy-btn" onclick="${copyMessage(correctMessage)}">Kopieren</button></td></tr>`
+            <td class="message-content">${correctMessage}</td>
+            <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td></tr>`
+            j+=1;
         }
         else{
 
@@ -120,21 +128,21 @@ const renderTable = async (data)=>{
     }
     html += `</tbody></table>`;
     tabelle.innerHTML = html;
+    j=0;
 }
 
 
 const genMessage = (fname,startup,fonds)=>{
-
     let message = `Hallo ${fname} ! Da wir bei ${startup} über den Fonds ${fonds} beteiligt sind, würde ich mich sehr über eine Vernetzung freuen. Herzlichst Mato Krahl`
-        return message;
+    return message;
 }
 
 
 const copyMessage = (message) =>{
+
     navigator.clipboard.writeText(message);
     console.log('copied yay!');
-
-};
+}
 
 
 const searchLinkedin = (fname,lname) =>{
@@ -171,9 +179,8 @@ const displayMessage=(message,country) => {
     /*if((country !== 'Deutschland')&&(country !== 'Oesterreich')&&(country != 'Schweiz')){
         return translateText(message);
     }else{*/
-        return message;
+    return message;
     //}
 
 }
 
-copyBtn.addEventListener("click",copyMessage(document.querySelector('.message')));
