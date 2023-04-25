@@ -121,7 +121,7 @@ thead{
 }
 
 .search-linked-in{
-
+    width: 30px;
 }
 
 
@@ -166,11 +166,6 @@ tbody>tr>td{
     margin: 0 20px;
 }
 
-.search-linked-in{
-    width: 150px;
-    color: white;
-    background: linear-gradient(90deg,#02025b,#03142b)
-}
 .fonds-head{
     width: 100px;
 }
@@ -182,16 +177,35 @@ tbody>tr>td{
 
 .copy-btn, .search-btn{
     width: 90%;
-    height: 30px;
+    height: 40px;
 }
 
 .search-btn{
-    background: linear-gradient(90deg,#02025b,#03142b);
-    color: white;
+    background: #fefefe;
+    color: black;
     border: none;
     border-radius: 4px;
-    box-shadow: #02025b 0 2px 3px;
+    box-shadow: rgba(0,0,0,0.5) 0 2px 3px;
     transition: all 0.1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 50px;
+    width: 60px;
+}
+
+.linkedin-icon{
+    width: 30px;
+    height: 30px;
+}
+
+.linkedin-field{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
 }
 
 .copy-btn{
