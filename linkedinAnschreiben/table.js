@@ -72,7 +72,7 @@ const renderTable = async (data)=>{
             <td>${data[i].country}</td>
             <td>${data[i].firstName1}</td>
             <td>${data[i].lastName1}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="/img/linkedin.png" class="linkedin-icon"></button></td>
+            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content" id="td${i}">${correctMessage}</td>
             <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td>
         </tr>`
@@ -87,7 +87,7 @@ const renderTable = async (data)=>{
             <td>${data[i].country}</td>
             <td>${data[i].firstName2}</td>
             <td>${data[i].lastName2}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="/img/linkedin.png" class="linkedin-icon"></button></td>
+            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content">${correctMessage}</td>
             <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td></r>`
             j+=1;
@@ -100,7 +100,7 @@ const renderTable = async (data)=>{
             <td>${data[i].country}</td>
             <td>${data[i].firstName3}</td>
             <td>${data[i].lastName3}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="/img/linkedin.png" class="linkedin-icon"></button></td>
+            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content" >${correctMessage}</td>
             <td><button class="copy-btn" id="copy-btn${j}"  onclick="copyMessage('${correctMessage}')">Kopieren</button></td></tr>`
             j+=1;
@@ -114,7 +114,7 @@ const renderTable = async (data)=>{
             <td>${data[i].country}</td>
             <td>${data[i].firstName4}</td>
             <td>${data[i].lastName4}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="/img/linkedin.png" class="linkedin-icon"></button></td>
+            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content">${correctMessage}</td>
             <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td></tr>`
             j+=1;
