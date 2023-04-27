@@ -47,6 +47,7 @@ const renderTable = async (data)=>{
             <td class="fonds-head">Fonds</td>
             <td class="startup-head">Startup</td>
             <td class="country-head">Land</td>
+            <td class="person-titel">Titel</td>
             <td class="first-name">Vorname</td>
             <td class="last-name">Nachname</td>
             <td class="search-linked-in">LinkedIn</td>
@@ -65,63 +66,20 @@ const renderTable = async (data)=>{
 
         if(data[i].firstName1 != isEmpty){
 
-        const correctMessage = await displayMessage(genMessage(data[i].firstName1,data[i].Startup,data[i].Fonds),data[i].country)
+        const correctMessage = await displayMessage(genMessage(data[i].firstName1,data[i].Startup,data[i].Fonds),data[i].Land)
         html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
-            <td>${data[i].country}</td>
-            <td>${data[i].firstName1}</td>
-            <td>${data[i].lastName1}</td>
+            <td>${data[i].Land}</td>
+            <td>${data[i].Titel}
+            <td>${data[i].Vorname}</td>
+            <td>${data[i].Nachname}</td>
             <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName1}','${data[i].lastName1}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content" id="td${i}">${correctMessage}</td>
             <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td>
         </tr>`
                 j+=1;
-    }else{}
-       if(data[i].firstName2 !=isEmpty){
-
-        const correctMessage = await displayMessage(genMessage(data[i].firstName2,data[i].Startup,data[i].Fonds),data[i].country)
-            html+=`<tr id="tr${j}">
-            <td>${data[i].Fonds}</td>
-            <td>${data[i].Startup}</td>
-            <td>${data[i].country}</td>
-            <td>${data[i].firstName2}</td>
-            <td>${data[i].lastName2}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName2}','${data[i].lastName2}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
-            <td class="message-content">${correctMessage}</td>
-            <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td></r>`
-            j+=1;
-        }else{}
-        if(data[i].firstName3 !=isEmpty){
-            const correctMessage = await displayMessage(genMessage(data[i].firstName3,data[i].Startup,data[i].Fonds),data[i].country)
-            html+=`<tr id="tr${j}">
-            <td>${data[i].Fonds}</td>
-            <td>${data[i].Startup}</td>
-            <td>${data[i].country}</td>
-            <td>${data[i].firstName3}</td>
-            <td>${data[i].lastName3}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName3}','${data[i].lastName3}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
-            <td class="message-content" >${correctMessage}</td>
-            <td><button class="copy-btn" id="copy-btn${j}"  onclick="copyMessage('${correctMessage}')">Kopieren</button></td></tr>`
-            j+=1;
-        }else{}
-        if(data[i].firstName4 !=isEmpty){
-            const correctMessage = await displayMessage(genMessage(data[i].firstName4,data[i].Startup,data[i].Fonds),data[i].country)
-
-            html+=`<tr id="tr${j}">
-            <td>${data[i].Fonds}</td>
-            <td>${data[i].Startup}</td>
-            <td>${data[i].country}</td>
-            <td>${data[i].firstName4}</td>
-            <td>${data[i].lastName4}</td>
-            <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].firstName4}','${data[i].lastName4}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
-            <td class="message-content">${correctMessage}</td>
-            <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td></tr>`
-            j+=1;
-        }
-        else{
-
-        }
+    }
         
     console.log(data[i].firstName1);    
    
