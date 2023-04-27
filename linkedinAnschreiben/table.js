@@ -7,6 +7,25 @@ const messageArray = [];
 let j = 0;
 
 let copyBtn = document.querySelectorAll('.copy-btn');
+function handleDrop(event) {
+    event.preventDefault();
+    const fileInput = document.querySelector('input[type="file"]');
+    const fileList = event.dataTransfer.files;
+    if (fileList.length > 0) {
+      const fileName = fileList[0].name;
+      fileInput.files = fileList;
+      fileInput.nextElementSibling.textContent = fileName;
+    }
+  }
+  
+  function handleDragOver(event) {
+    event.preventDefault();
+  }
+  
+  const dropZone = document.querySelector('#dropzone');
+  dropZone.addEventListener('drop', handleDrop);
+  dropZone.addEventListener('dragover', handleDragOver);
+  
 
 
 const showData = () => {
@@ -142,3 +161,28 @@ const displayMessage=(message,country) => {
 
 }
 
+const readFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsText(file);
+    
+    reader.onload = function () {
+      const csv = reader.result;
+      const lines = csv.split("\n");
+      const result = [];
+  
+      const headers = lines[0].replace("\r", "").split(",");
+      for (let i = 1; i < lines.length; i++) {
+        const obj = {};
+        const currentline = lines[i].replace("\r", "").split(",");
+        for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = currentline[j];
+        }
+        result.push(obj);
+      }
+  
+      const jsonData = JSON.stringify(result, null, 2);
+  
+      renderTable(JSON.parse(jsonData));
+    };
+  };
+  
