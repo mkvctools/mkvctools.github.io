@@ -17,11 +17,26 @@
 	<form>
 		<label for="csvFile" class="custom-file-upload">CSV-Datei auswählen:</label>
 		<input type="file" id="csvFile" name="csvFile">
-		<button class="gen-button"type="button" onclick="showData()">Show Data</button>
+		
 	</form> 
     <p class="tool-title">CSV to Linkedin Message Converter</p>
 
     </nav>
+    <div class="text-gen">
+        <div class="text-gen-nav">
+        <select name="Anrede" id="anrede">
+            <option value="sehr geehrter">Sehr geehrter</option>
+            <option value="Hallo">Hallo</option>
+        </select>
+        </div>
+        <button>Vorname</button>
+        <button>Nachname</button>
+        <button>Fonds</button>
+        <button>Startup</button>
+        <textarea class="text-gen-area"></textarea>
+        <button class="gen-button"type="button" onclick="showData()">Show Data</button>
+    </div>
+
     </header>   
         <div class="table-container">
         </div>

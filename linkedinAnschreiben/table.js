@@ -66,7 +66,7 @@ const renderTable = async (data)=>{
 
         if(data[i].firstName1 != isEmpty){
 
-        const correctMessage = await displayMessage(genMessage(data[i].firstName1,data[i].Startup,data[i].Fonds),data[i].Land)
+        const correctMessage = await displayMessage(genMessage(data[i].Nachname,data[i].Startup,data[i].Fonds,data[i].Titel,data[i].Geschlecht),data[i].Land)
         html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
