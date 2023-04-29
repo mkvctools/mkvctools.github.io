@@ -28,16 +28,24 @@
     </div>
     <div class="text-gen">
         <div class="text-gen-nav">
-        <select name="Anrede" id="anrede">
+
+        </div>
+        <div class="button-area">        
+        <select class="gen-btn"name="Anrede" id="anrede">
             <option value="sehr geehrter">Sehr geehrter</option>
             <option value="Hallo">Hallo</option>
         </select>
+        <button id="fname-btn" class="gen-btn" onclick="displayWord('[Vorname]')">Vorname</button>
+        <button id="lname-btn" class="gen-btn" onclick="displayWord('[Nachname]')">Nachname</button>
+        <button id="fund-btn" class="gen-btn" onclick="displayWord('[Fonds]')">Fonds</button>
+        <button id="startup-btn" class="gen-btn" onclick="displayWord('[Startup]')">Startup</button>
+        <select class="gen-btn" id="text-select" name="Anrede" id="anrede">
+            <option value="sehr geehrter">Text 1</option>
+            <option value="Hallo">Text 2</option>
+        </select>
         </div>
-        <button>Vorname</button>
-        <button>Nachname</button>
-        <button>Fonds</button>
-        <button>Startup</button>
-        <textarea class="text-gen-area"></textarea>
+        <textarea class="text-gen-area" id="textgenarea">
+        </textarea>
         <button class="gen-button"type="button" onclick="showData()">Show Data</button>
     </div>
 

@@ -17,7 +17,7 @@ header{
     background-color: rgb(255, 223, 208);
     box-shadow: rgba(0,0,0,0.2) 0 4px 20px;
     font-weight: 500;
-    position: fixed;
+
     width: 100%;
 }
 
@@ -95,6 +95,28 @@ input[type="file"]::file-selector-button:hover {
 
 
 /*------- Text Gen -------- */
+
+.button-area{
+    margin-bottom: 15px;
+    gap: 30px;
+    display: flex;
+}
+
+.titel-sel,.gen-btn{
+    height: 30px;
+    background: linear-gradient(90deg,rgb(248, 157, 96),rgb(231, 101, 15));
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    text-align: center;
+    color: white;
+    box-shadow: rgba(0,0,0,0.2) 0px 4px 8px;
+}
+
+.titel-sel{
+    width: 120px;
+}
+
 .text-gen{
     width: 100%;
     height: 300px;
@@ -106,6 +128,7 @@ input[type="file"]::file-selector-button:hover {
 .text-gen-area{
     width: 90%;
     height: 50%;
+    margin-bottom: 15px;
 }
 
 
@@ -192,8 +215,8 @@ tbody>tr>td{
 }
 
 .copy-btn, .search-btn{
-    width: 90%;
     height: 40px;
+    width: 90%;
 }
 
 .search-btn{
@@ -207,8 +230,9 @@ tbody>tr>td{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 50px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
+    margin: 0 auto;
 }
 
 .linkedin-icon{
@@ -217,10 +241,8 @@ tbody>tr>td{
 }
 
 .linkedin-field{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
+
+
 
 }
 
@@ -233,7 +255,7 @@ tbody>tr>td{
     transition: all 0.1s ease-in-out;
 }
 
-.search-btn:hover,.copy-btn:hover{
+.search-btn:hover,.copy-btn:hover,.gen-btn:hover{
     cursor: pointer;
     transform: scale(1.1);
 }
