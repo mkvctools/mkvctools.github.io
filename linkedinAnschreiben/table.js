@@ -26,7 +26,7 @@ const showData = () => {
       reader.readAsText(input.files[0]);
   
       reader.onload = function () {
-        const csv = reader.result.replace(";;",";").replace("\r","");
+        const csv = reader.result.replaceAll("\r","");
         const lines = csv.split("\n");
         const result = []; 
         const headers = lines[0].split(";");
@@ -49,6 +49,7 @@ const showData = () => {
       };
 
     } catch (error) {
+      alert('Bitte CSV Datei öffnen!');
       console.error(error);
     }
   };
@@ -102,17 +103,20 @@ const genMessage = (messageVal,gender,Vorname,Nachname,Fonds,Startup,Land)=>{
     let anrede = 'Sehr geehrte Frau';
     let message = ''
 
-    if(Land!=('Deutschland') && Land!=('Oesterreich') && Land!=('Schweiz')){
+    if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& gender!=('Frau')){
         message = `Dear Mr. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
 
+    }
+    else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& gender=='Frau'){
+      message = `Dear Mrs. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
+      
     }
     else{
 
     if(gender!== 'Frau' ){
         anrede = 'Sehr geehrter Herr ';
     }
-   
-      message = messageVal.replace('[Geschlecht]',anrede).replace('[Nachname]',Nachname).replace('[Fonds]',Fonds).replace('[Startup]',Startup);
+      message = messageVal.replaceAll('[Geschlecht]',anrede).replaceAll('[Nachname]',Nachname).replaceAll('[Fonds]',Fonds).replaceAll('[Startup]',Startup);
     }
     //console.log(message);
     return message;
@@ -161,7 +165,7 @@ const displayMessage=(message,country) => {
 
     console.log(country);
     country = 0;
-    if((country !== 'Deutschland')&&(country !== 'Oesterreich')&&(country != 'Schweiz')){
+    if((country !== 'Deutschland')&&(country !== 'Österreich')&&(country != 'Schweiz')){
         return translateText(message);
     }else{
     return message;
@@ -169,30 +173,6 @@ const displayMessage=(message,country) => {
     }
 }
 
-const readFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsText(file);
-    
-    reader.onload = function () {
-      const csv = reader.result;
-      const lines = csv.split("\n");
-      const result = [];
-  
-      const headers = lines[0].replace("\r", "").split(",");
-      for (let i = 1; i < lines.length; i++) {
-        const obj = {};
-        const currentline = lines[i].replace("\r", "").split(",");
-        for (let j = 0; j < headers.length; j++) {
-          obj[headers[j]] = currentline[j];
-        }
-        result.push(obj);
-      }
-  
-      const jsonData = JSON.stringify(result, null, 2);
-  
-      renderTable(JSON.parse(jsonData));
-    };
-  };
   
   textSelect.addEventListener('change',()=>{
     message1 = '[Geschlecht] [Nachname]. Da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung freuen. Herzlichst Mato Krahl';
