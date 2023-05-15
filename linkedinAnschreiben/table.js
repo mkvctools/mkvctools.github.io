@@ -132,21 +132,21 @@ const renderTable = async (data)=>{
 }
 
 
-const genMessage = (messageVal,gender,Vorname,Nachname,Fonds,Startup,Land)=>{
+const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     let anrede = 'Sehr geehrte Frau';
     let message = ''
 
-    if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& gender!=('Frau')){
+    if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede!=('Frau')){
         message = `Dear Mr. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
 
     }
-    else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& gender=='Frau'){
+    else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede=='Frau'){
       message = `Dear Mrs. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
       
     }
     else{
 
-    if(gender!== 'Frau' ){
+    if(Anrede!== 'Frau' ){
         anrede = 'Sehr geehrter Herr ';
     }
       message = messageVal.replaceAll('[Geschlecht]',anrede).replaceAll('[Nachname]',Nachname).replaceAll('[Fonds]',Fonds).replaceAll('[Startup]',Startup);
