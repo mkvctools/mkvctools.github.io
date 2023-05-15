@@ -17,7 +17,7 @@
         <nav>
 
 	<form>
-		<label for="csvFile" class="custom-file-upload">CSV-Datei auswählen:</label>
+		<label for="csvFile" class="custom-file-upload">CSV- oder json-Datei auswählen:</label>
 		<input type="file" id="csvFile" name="csvFile">
 		
 	</form> 
@@ -36,7 +36,10 @@
         <button id="startup-btn" class="gen-btn" onclick="displayWord('[Startup]')">Startup</button>
         </div>
         <textarea class="text-gen-area" id="textgenarea" value="[Geschlecht] [Nachname]. Da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung freuen. Herzlichst Mato Krahl">[Geschlecht] [Nachname]. Da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung freuen. Herzlichst Mato Krahl</textarea>
+        <div class="button-area">
         <button class="gen-button"type="button" onclick="showData()">Show Data</button>
+        <button class="save-button gen-button" type="button" onclick="saveData()">Save Data</button>
+        </div>
     </div>
 
     </header>   

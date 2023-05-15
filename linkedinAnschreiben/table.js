@@ -18,56 +18,75 @@ let j = 0;
 
 let copyBtn = document.querySelectorAll('.copy-btn');
   
-
 const showData = () => {
-    try {
-      const input = document.getElementById("csvFile");
-      const reader = new FileReader();
-      reader.readAsText(input.files[0]);
-  
-      reader.onload = function () {
-        const csv = reader.result.replaceAll("\r","");
-        const lines = csv.split("\n");
-        const result = []; 
-        const headers = lines[0].split(";");
-        for (let i = 1; i < lines.length; i++) {
-          const obj = {};
-          const currentline = lines[i].replace("\r","").split(";");
-          for (let j = 0; j < headers.length; j++) {
-            if(headers[j]==isEmpty){
-                obj[headers[j]]= isEmpty;
-            }
-            obj[headers[j]] = currentline[j];
-          }
-          result.push(obj);
-        }
-        const jsonData = JSON.stringify(result, null, 6);
-  
-        renderTable(JSON.parse(jsonData));
-        console.log(jsonData.replace("\r",""));
-        return jsonData;
-      };
+  try {
+    const input = document.getElementById("csvFile");
+    const reader = new FileReader();
+    reader.readAsText(input.files[0]);
 
-    } catch (error) {
-      alert('Bitte CSV Datei öffnen!');
-      console.error(error);
+    reader.onload = function () {
+      if(input.files[0].name.endsWith('.csv')){
+        console.log('im CSV TEIL');
+      const csv = reader.result.replaceAll("\r","");
+      const lines = csv.split("\n");
+      const result = []; 
+      const headers = lines[0].split(";");
+      for (let i = 1; i < lines.length; i++) {
+        const obj = {};
+        const currentline = lines[i].replace("\r","").split(";");
+        for (let j = 0; j < headers.length; j++) {
+          if(headers[j]==isEmpty){
+              obj[headers[j]]= isEmpty;
+          }
+          obj[headers[j]] = currentline[j];
+        }
+        result.push(obj);
+        console.log("immernoch im CSV Teil");
+      }
+      
+      const jsonData = JSON.stringify(result, null, 6);
+    
+      renderTable(JSON.parse(jsonData));
+      console.log(jsonData.replace("\r",""));
+      return jsonData;}
+      else{
+        const jsonData = reader.result;
+        renderTable(JSON.parse(jsonData));
+        renderChecked(JSON.parse(jsonData))
+        return jsonData;
+      }
     }
-  };
+
+  } catch (error) {
+    alert('Bitte CSV Datei öffnen!');
+    console.error(error);
+  }
+};
+
+  const showJSON = () =>{
+    var xhr = new XMLHttpRequest();
+    const jsonData = xhr.open("GET", "MKdata.json", true);
+    //xhr.send();
+  
+    renderTable(JSON.parse(jsonData))
+    return jsonData;
+  }
   
 const renderTable = async (data)=>{
 
     let html = `<table id="my-table">
-    <thead>
+    <thead class="sticky-thead">
         <tr>
             <td class="fonds-head">Fonds</td>
             <td class="startup-head">Startup</td>
             <td class="country-head">Land</td>
-            <td class="person-titel">Titel</td>
+            <td class="person-titel">Anrede</td>
             <td class="first-name">Vorname</td>
             <td class="last-name">Nachname</td>
             <td class="search-linked-in">LinkedIn</td>
             <td class="message">Message</td>
             <td class="copy-message">Nachricht Kopieren</td>
+            <td class="done">Erledigt</td>
         </tr>
     </thead>
     <tbody>`;
@@ -76,26 +95,40 @@ const renderTable = async (data)=>{
     for(let i = 0;i<data.length;i++){
         //console.log(j);
         if(data[i].Nachname != isEmpty){
-        const correctMessage = await genMessage(textGenArea.value,data[i].Geschlecht,data[i].Vorname,data[i].Nachname,data[i].Fonds,data[i].Startup,data[i].Land);
+        const correctMessage = await genMessage(textGenArea.value,data[i].Anrede,data[i].Vorname,data[i].Nachname,data[i].Fonds,data[i].Startup,data[i].Land);
         html+=`<tr id="tr${j}">
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
             <td>${data[i].Land}</td>
-            <td>${data[i].Titel}
+            <td>${data[i].Anrede}
             <td>${data[i].Vorname}</td>
             <td>${data[i].Nachname}</td>
             <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].Vorname}','${data[i].Nachname}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content" id="td${i}">${correctMessage}</td>
             <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td>
+            <td><input type="checkbox" id="myCheckbox${i}" onclick="changeBackground(this)" /></td>
         </tr>`
+
                 j+=1;
     }
-        
-    //console.log(data[i].Vorname);    
+
+
+    
+    //console.log(data[i].Vorname);  
+
     }
     html += `</tbody></table>`;
     tabelle.innerHTML = html;
     j=0;
+
+    for(let i = 0;i<data.length;i++){
+      if(data[i].Erledigt){
+        //document.getElementById(`tr${i}`).style.backgroundColor = 'green';
+        document.getElementById(`myCheckbox${i}`).checked = true;
+        document.getElementById(`tr${i}`).style.backgroundColor = 'lightgreen';
+        console.log('in For Loop Abfrage');
+      }
+    }
 }
 
 
@@ -216,3 +249,53 @@ const displayMessage=(message,country) => {
           tableBody.appendChild(row);
         });
       });
+
+
+      function changeBackground(checkbox) {
+        var tr = checkbox.parentNode.parentNode;
+        if (checkbox.checked == true) {
+          tr.style.backgroundColor = "lightgreen";
+        } else {
+          tr.style.backgroundColor = "white";
+        }
+      }
+
+
+
+      function saveData() {
+        var table = document.getElementById("my-table");
+        var data = [];
+        for (let i = 1; i < table.rows.length; i++) {
+          let row = table.rows[i];
+          for(let j=0;j<table.rows.length;j++){
+          var rowData = {
+            "Fonds": row.cells[0].innerHTML,
+            "Startup": row.cells[1].innerHTML,
+            "Land": row.cells[2].innerHTML,
+            "Anrede": row.cells[3].innerHTML,
+            "Vorname": row.cells[4].innerHTML,
+            "Nachname": row.cells[5].innerHTML,
+            "Message": row.cells[7].innerHTML,
+            "Erledigt": row.cells[9].getElementsByTagName("input")[0].checked,
+          };    
+        }
+          data.push(rowData);
+        }
+        var jsonData = JSON.stringify(data);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST","/save-json.php");
+        xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+        xhr.send(jsonData);
+        var file = new Blob([jsonData], {type: "application/json"});
+        var a = document.createElement("a");
+        var url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = "MKdata.json";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+        }, 0);
+      }
+
