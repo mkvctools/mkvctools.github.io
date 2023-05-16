@@ -132,11 +132,11 @@ const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     let message = ''
 
     if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede!=("Frau")){
-        message = `Dear Mr. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to connect on Linkedin. Sincerely Mato Krahl`
+        message = `Dear Mr. ${Nachname}, as we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to connect on Linkedin. Sincerely Mato Krahl`
 
     }
     else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede=="Frau"){
-      message = `Dear Mrs. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to connect on Linkedin. Sincerely Mato Krahl`
+      message = `Dear Mrs. ${Nachname}, as we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to connect on Linkedin. Sincerely Mato Krahl`
       
     }
     else{
@@ -208,7 +208,7 @@ const displayMessage=(message,country) => {
 
   
   textSelect.addEventListener('change',()=>{
-    message1 = '[Geschlecht] [Nachname]. Da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung auf Linkedin freuen. Herzlichst Mato Krahl';
+    message1 = '[Geschlecht] [Nachname], da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung auf Linkedin freuen. Herzlichst Mato Krahl';
     
     textGenArea.value = message1;
 
