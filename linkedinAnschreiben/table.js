@@ -132,11 +132,11 @@ const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     let message = ''
 
     if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede!=("Frau")){
-        message = `Dear Mr. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
+        message = `Dear Mr. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to connect on Linkedin. Sincerely Mato Krahl`
 
     }
     else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede=="Frau"){
-      message = `Dear Mrs. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
+      message = `Dear Mrs. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to connect on Linkedin. Sincerely Mato Krahl`
       
     }
     else{
