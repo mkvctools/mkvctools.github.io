@@ -52,7 +52,6 @@ const showData = () => {
       else{
         const jsonData = reader.result;
         renderTable(JSON.parse(jsonData));
-        renderChecked(JSON.parse(jsonData))
         return jsonData;
       }
     }
@@ -63,14 +62,6 @@ const showData = () => {
   }
 };
 
-  const showJSON = () =>{
-    var xhr = new XMLHttpRequest();
-    const jsonData = xhr.open("GET", "MKdata.json", true);
-    //xhr.send();
-  
-    renderTable(JSON.parse(jsonData))
-    return jsonData;
-  }
   
 const renderTable = async (data)=>{
 
@@ -136,11 +127,11 @@ const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     let anrede = 'Sehr geehrte Frau';
     let message = ''
 
-    if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede!=('Frau')){
+    if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede!=("Frau")){
         message = `Dear Mr. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
 
     }
-    else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede=='Frau'){
+    else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede=="Frau"){
       message = `Dear Mrs. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
       
     }
@@ -272,7 +263,7 @@ const displayMessage=(message,country) => {
             "Fonds": row.cells[0].innerHTML,
             "Startup": row.cells[1].innerHTML,
             "Land": row.cells[2].innerHTML,
-            "Anrede": row.cells[3].innerHTML,
+            "Anrede": row.cells[3].innerHTML.substring(0,4),
             "Vorname": row.cells[4].innerHTML,
             "Nachname": row.cells[5].innerHTML,
             "Message": row.cells[7].innerHTML,
