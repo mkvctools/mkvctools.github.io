@@ -68,6 +68,7 @@ const renderTable = async (data)=>{
     let html = `<table id="my-table">
     <thead class="sticky-thead">
         <tr>
+            <td class="row-num">#</td>
             <td class="fonds-head">Fonds</td>
             <td class="startup-head">Startup</td>
             <td class="country-head">Land</td>
@@ -76,8 +77,8 @@ const renderTable = async (data)=>{
             <td class="last-name">Nachname</td>
             <td class="search-linked-in">LinkedIn</td>
             <td class="message">Message</td>
-            <td class="copy-message">Nachricht Kopieren</td>
-            <td class="done">Erledigt</td>
+            <td class="copy-message">Copy</td>
+            <td class="done">Done</td>
         </tr>
     </thead>
     <tbody>`;
@@ -88,6 +89,7 @@ const renderTable = async (data)=>{
         if(data[i].Nachname != isEmpty){
         const correctMessage = await genMessage(textGenArea.value,data[i].Anrede,data[i].Vorname,data[i].Nachname,data[i].Fonds,data[i].Startup,data[i].Land);
         html+=`<tr id="tr${j}">
+            <td>${j}</td>
             <td>${data[i].Fonds}</td>
             <td>${data[i].Startup}</td>
             <td>${data[i].Land}</td>
@@ -96,7 +98,9 @@ const renderTable = async (data)=>{
             <td>${data[i].Nachname}</td>
             <td class="linkedin-field"><button class="search-btn" onclick="searchLinkedin('${data[i].Vorname}','${data[i].Nachname}')"><img src="img/linkedin.png" class="linkedin-icon"></button></td>
             <td class="message-content" id="td${i}">${correctMessage}</td>
-            <td><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}')">Kopieren</button></td>
+            <td class="copy-container"><button class="copy-btn" id="copy-btn${j}" onclick="copyMessage('${correctMessage}','${data[i].Nachname}')"><img class="copy-icon" src="./img/copy.svg"/></button>
+            <span id="tooltip" class="tooltiptext">${data[i].Nachname} copied, yay!</span>
+            </td>
             <td><input type="checkbox" id="myCheckbox${i}" onclick="changeBackground(this)" /></td>
         </tr>`
 
@@ -128,11 +132,11 @@ const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     let message = ''
 
     if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede!=("Frau")){
-        message = `Dear Mr. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
+        message = `Dear Mr. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
 
     }
     else if(Land!=('Deutschland') && Land!=('Österreich') && Land!=('Schweiz')&& Anrede=="Frau"){
-      message = `Dear Mrs. ${Nachname} As we are involved in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
+      message = `Dear Mrs. ${Nachname} As we are invested in ${Startup} through the fund ${Fonds}, I would be very happy to network on Linkedin. Sincerely Mato Krahl`
       
     }
     else{
@@ -146,8 +150,13 @@ const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     return message;
 }
 
-const copyMessage = (message) =>{
+const copyMessage = (message,name) =>{
     navigator.clipboard.writeText(message);
+
+  
+    setTimeout(function(){
+      document.getElementById("tooltip").style.visibility = "hidden";
+    },2000)
     console.log('copied yay!');
 }
 

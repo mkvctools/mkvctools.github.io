@@ -26,7 +26,7 @@ nav {
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 50px;
     padding: 0 100px;
     font-weight: 400;
@@ -138,7 +138,7 @@ input[type="file"]::file-selector-button:hover {
 
 .text-gen{
     width: 100%;
-    height: 300px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -147,7 +147,7 @@ input[type="file"]::file-selector-button:hover {
 .text-gen-area{
     width: 75%;
     height: 50%;
-    margin-bottom: 15px;
+
     color: black;
 }
 
@@ -156,15 +156,28 @@ input[type="file"]::file-selector-button:hover {
 
 
 table{
-    width: 80%;
-    margin-top: 60px;
+    width: 97%;
+    margin-top: 20px;
     box-shadow: rgba(0,0,0,0.2) 0 10px 20x;
 }
 
+@media  screen and (min-width: 1300px) {
+    table{
+        width: 90% !important;
+    }
+}
+
+
+@media  screen and (min-width: 1500px) {
+    table{
+        width: 80% !important;
+    }
+}
 .table-container{
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start
 }
 thead{
     /*background: linear-gradient(90deg,#02025b,#03142b); */
@@ -177,20 +190,16 @@ thead{
     box-shadow: rgba(0,0,0,0.2) 0 10px 20px;
 }
 
-.copy-message{
-    background: linear-gradient(90deg, rgb(248, 157, 96),rgb(231, 101, 15));
-    color: white
-}
 
-.search-linked-in{
-    width: 30px;
-}
 
+.startup-head,.done,.first-name,.last-name,.fonds-head,.copy-message,.country-head{
+    width: 50px;
+}
 
 
 thead>tr>td{
     text-align: center;
-    padding: 0 20px;
+    
 }
 
 table>tr{
@@ -198,7 +207,7 @@ table>tr{
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
-    padding: 5px 10px;
+    padding: 5px;
     margin: 20px;
     height: 50px;
 }
@@ -228,19 +237,31 @@ tbody>tr>td{
     margin: 0 20px;
 }
 
-.fonds-head{
-    width: 200px;
-}
 
-.country-head{
-    width: calc(100px + 50px);
 
-}
 
 .copy-btn, .search-btn{
     height: 40px;
-    width: 90%;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+  
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+  }
+
 
 .search-btn{
     background: #fefefe;
@@ -253,21 +274,18 @@ tbody>tr>td{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 40px;
-    width: 40px;
     margin: 0 auto;
 }
 
-.linkedin-icon{
+.linkedin-icon,.copy-icon{
     width: 30px;
     height: 30px;
 }
 
-.linkedin-field{
+.linkedin-field,.copy-container{
     width: 50px;
-
-
 }
+
 
 .copy-btn{
     background: linear-gradient(90deg,rgb(248, 157, 96),rgb(231, 101, 15));
