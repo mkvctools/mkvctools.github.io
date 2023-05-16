@@ -142,7 +142,7 @@ const genMessage = (messageVal,Anrede,Vorname,Nachname,Fonds,Startup,Land)=>{
     else{
 
     if(Anrede!== 'Frau' ){
-        anrede = 'Sehr geehrter Herr ';
+        anrede = 'Sehr geehrter Herr';
     }
       message = messageVal.replaceAll('[Geschlecht]',anrede).replaceAll('[Nachname]',Nachname).replaceAll('[Fonds]',Fonds).replaceAll('[Startup]',Startup);
     }
@@ -208,7 +208,7 @@ const displayMessage=(message,country) => {
 
   
   textSelect.addEventListener('change',()=>{
-    message1 = '[Geschlecht] [Nachname]. Da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung freuen. Herzlichst Mato Krahl';
+    message1 = '[Geschlecht] [Nachname]. Da wir bei [Startup] über den Fonds [Fonds] beteiligt sind, würde ich mich sehr über eine Vernetzung auf Linkedin freuen. Herzlichst Mato Krahl';
     
     textGenArea.value = message1;
 
@@ -269,23 +269,19 @@ const displayMessage=(message,country) => {
           let row = table.rows[i];
           for(let j=0;j<table.rows.length;j++){
           var rowData = {
-            "Fonds": row.cells[0].innerHTML,
-            "Startup": row.cells[1].innerHTML,
-            "Land": row.cells[2].innerHTML,
-            "Anrede": row.cells[3].innerHTML.substring(0,4),
-            "Vorname": row.cells[4].innerHTML,
-            "Nachname": row.cells[5].innerHTML,
-            "Message": row.cells[7].innerHTML,
-            "Erledigt": row.cells[9].getElementsByTagName("input")[0].checked,
+            "Fonds": row.cells[1].innerHTML,
+            "Startup": row.cells[2].innerHTML,
+            "Land": row.cells[3].innerHTML,
+            "Anrede": row.cells[4].innerHTML.substring(0,4),
+            "Vorname": row.cells[5].innerHTML,
+            "Nachname": row.cells[6].innerHTML,
+            "Message": row.cells[8].innerHTML,
+            "Erledigt": row.cells[10].getElementsByTagName("input")[0].checked,
           };    
         }
           data.push(rowData);
         }
         var jsonData = JSON.stringify(data);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST","/save-json.php");
-        xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-        xhr.send(jsonData);
         var file = new Blob([jsonData], {type: "application/json"});
         var a = document.createElement("a");
         var url = URL.createObjectURL(file);
