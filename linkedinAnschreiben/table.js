@@ -10,7 +10,6 @@ const lnameBtn = document.querySelector('#lname-btn');
 const fundBtn = document.querySelector('#fund-btn');
 const startupBtn = document.querySelector('#startup-btn');
 const textSelect = document.querySelector('#text-select');
-
 const nameHeader = document.querySelector('#my-table th:nth-child(2)');
 const tableBody = document.querySelector('#my-table tbody');
 
