@@ -15,22 +15,27 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-const renderer = new THREE.WebGLRenderer();
+scene.background = 'red';
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setClearColor( 0x000000, 0 ); // the default
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshPhysicalMaterial({
-  color: 0xEA5600,
+  color: 0xffffff,
   Fog: true,
 });
 
+let min = -3;
+let max = 3;
 let x = 0;
 const cubeArray = [];
-for (let i = -3; i <= 3; i++) {
+for (let i = min; i <= max; i++) {
   let y_pos = i * 1.6;
-  for (let j = -3; j <= 3; j++) {
+  for (let j = min; j <= max; j++) {
     let cube = new THREE.Mesh(geometry, material);
     cube.position.x = j * 1.6;
     cube.position.y = y_pos;
@@ -55,25 +60,13 @@ scene.add(backLight);
 
 function animate() {
   requestAnimationFrame(animate);
-
- 
-  if (cubeArray[0].position.x > -6) {
-  for(let i = 0; i<7;i++){
-
-    for(let k = -3;k<=3; k++){
-      cubeArray[i].position.x += k * 0.4;
-      cubeArray[i].position.y -= (k*k*0.0001)- 0.01;
-
-        console.log(k);
-  
-      }}
-     } else {
     for (let i = 0; i < cubeArray.length; i++) {
-      cubeArray[i].rotation.x += Math.random() * (0.001 - 0.0005) + 0.0005;
-      cubeArray[i].rotation.y += Math.random() * (0.001 - 0.0005) + 0.0005;
+      cubeArray[i].rotation.x += Math.random() * (0.01 - 0.005) + 0.005;
+      cubeArray[i].rotation.y += Math.random() * (0.01 - 0.005) + 0.005;
+      //camera.rotation.z += 0.00005;
 
     }
-  }
+  
   renderer.render(scene, camera);
 }
 

@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.img-container{
+    width: 400px;
+    height: 400px;
+    background-color: #bbbbbb;
+    box-shadow: rgba(0,0,0,0.2) 0 10px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 200ms;
+    position: relative;
+}
+
+.img-container img{
+    max-height: 300px;
+    transition: all ease-in-out 200ms;
+}
+
+.img-container:hover{
+    transform: scale(1.05);
+}
