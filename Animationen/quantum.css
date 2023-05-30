@@ -1,0 +1,85 @@
+svg {
+    width: 90%;
+    height: 90%;
+    overflow: visible;
+    margin: 20px;
+}
+
+
+svg .core circle{
+    fill: #ea5600;
+
+}
+
+svg .core circle:first-child{
+    filter: url(#blur);
+    fill: #ea5600;
+    opacity: 0.5;
+}
+
+svg .ring ellipse{
+    stroke: #ea5600;
+    stroke-width: 1.5px;
+    fill: none;
+    transform-origin: center;
+   stroke-dasharray: 109 6;
+    stroke-dashoffset: 25.5;
+}
+
+svg .ring ellipse:nth-child(1){
+    filter: url(#blur);
+    opacity: 0.5;
+}
+
+svg .ring ellipse:nth-child(3){
+    stroke-dasharray: 0 230;
+    animation-name: orbit;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite; 
+    stroke-width: 7px;
+    stroke-linecap: round;
+}
+
+svg .ring ellipse:nth-child(4){
+    stroke-dasharray: 0 230;
+    animation-name: orbit;
+    animation-duration: 3s;
+    animation-delay: -1.5s;    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    stroke-width: 7px;
+    stroke-linecap: round;
+}
+
+svg .ring:nth-child(2) ellipse{
+    animation-duration: 6s;
+    animation-direction: reverse;
+
+}
+
+svg .ring:nth-child(3) ellipse:nth-child(3){
+    animation-delay: -1s;
+
+}
+
+@keyframes orbit{
+    0%{
+        stroke-dashoffset: 0;
+    }
+
+    50%{
+        stroke-width: 4px;
+    }
+
+    100%{
+        stroke-dashoffset: 230;
+    }
+}
+
+
+.dot{
+    width: 15px;
+    height: 15px;
+    background-color: #ea5600;
+    z-index: 100;
+}
