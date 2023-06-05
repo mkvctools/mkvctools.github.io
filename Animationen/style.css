@@ -2,6 +2,7 @@
 @import url(quantum.css);
 @import url(herz.css);
 @import url(robo.css);
+@import url(leisure.css);
 
 
 *{
@@ -29,8 +30,7 @@ body{
     width: 400px;
     height: 400px;
     padding: 10px;
-    background-color: #fdb;
-    box-shadow: rgba(0,0,0,0.2) 0 10px 30px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,8 +39,12 @@ body{
 }
 
 .img-container img{
-    max-height: 300px;
+    max-height: 180px;
     transition: all ease-in-out 200ms;
+}
+
+.img-container svg{
+    max-height: 180px;
 }
 
 .img-container:hover{

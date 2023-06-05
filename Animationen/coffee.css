@@ -1,17 +1,17 @@
 .dampf{
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 8%;
+    height: 8%;
     z-index: 1;
-    top: 220px;
-    right: 122px;
+    top: 55%;
+    right: 29%;
     opacity: 0;
 
 
 }
 
 .img-container:hover .dampf{
-    animation: dampfen 2.5s infinite;
+    animation: dampfen 2s infinite;
 }
 
 @keyframes dampfen {
@@ -21,7 +21,7 @@
 
     50%{
         opacity: 100%;
-        transform: translate(0,-10px);
+        transform: translate(0,-60%);
     }
 
     70%{
@@ -29,6 +29,6 @@
     }
 
     100%{
-        transform: translate(0,-10px);
+        transform: translate(0,-60%);
     }
 }
