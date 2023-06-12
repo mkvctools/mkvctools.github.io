@@ -3,8 +3,10 @@
 @import url(herz.css);
 @import url(robo.css);
 @import url(leisure.css);
-
-
+@import url(kriterien.css);
+@import url(europa.css);
+@import url(technologien.css);
+@import url(manager.css);
 *{
     margin: 0;
     padding: 0;
@@ -12,11 +14,10 @@
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 .container{
+    margin: 0 auto;
     width: 80vw;
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +40,7 @@ body{
 }
 
 .img-container img{
-    max-height: 180px;
+    max-height: 300px;
     transition: all ease-in-out 200ms;
 }
 

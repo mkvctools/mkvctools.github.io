@@ -1,34 +1,25 @@
 .dampf{
-    position: absolute;
-    width: 8%;
-    height: 8%;
-    z-index: 1;
-    top: 55%;
-    right: 29%;
     opacity: 0;
 
-
 }
-
 .img-container:hover .dampf{
-    animation: dampfen 2s infinite;
+    animation: dampfen 3s infinite;
 }
 
 @keyframes dampfen {
-    0%{
+    0% {
         opacity: 0%;
-    }
 
-    50%{
+    }
+    50% {
         opacity: 100%;
-        transform: translate(0,-60%);
-    }
 
-    70%{
+    }
+    90% {
         opacity: 0%;
-    }
 
-    100%{
-        transform: translate(0,-60%);
+    }
+    100% {
+    
     }
 }

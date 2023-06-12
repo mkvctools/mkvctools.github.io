@@ -1,0 +1,26 @@
+.technology-svg g:nth-child(even) path {
+    animation: data-even 3s linear infinite;
+}
+
+.technology-svg g:nth-child(odd) path {
+    animation: data-even 3s linear infinite;
+}
+
+@keyframes data-even {
+    0% {
+        stroke-dasharray: 0;
+    }
+    80% {
+        stroke-dasharray: 120;
+    }
+}
+
+@keyframes data-odd {
+    0% {
+        stroke-dasharray: 0;
+    }
+    70% {
+        stroke-dasharray: 100;
+    }
+
+}
