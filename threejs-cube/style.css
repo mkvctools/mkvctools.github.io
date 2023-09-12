@@ -12,3 +12,24 @@ body{
     color: #fefefe;
     background: linear-gradient(90deg,#03142e,#02094a);
 }
+
+.cube-wrapper{
+ display: flex;
+}
+
+@media screen and (max-width: 700px) {
+    .cube-wrapper{
+        flex-direction: column;
+    }
+}
+
+#cube-scene{
+ 
+}
+
+.left-box,.right-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+} 
