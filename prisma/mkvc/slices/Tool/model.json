@@ -1,0 +1,16 @@
+{
+  "id": "tool",
+  "type": "SharedSlice",
+  "name": "Tool",
+  "description": "Tool",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

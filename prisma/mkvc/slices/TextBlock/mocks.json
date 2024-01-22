@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Magna esse adipisicing eu minim anim."
+						}
+					}
+				]
+			},
+			"text2": {
+				"__TYPE__": "FieldContent",
+				"value": "order",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
