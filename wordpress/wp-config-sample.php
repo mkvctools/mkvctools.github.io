@@ -24,18 +24,18 @@
  * Ersetze datenbankname_hier_einfuegen
  * mit dem Namen der Datenbank, die du verwenden möchtest.
  */
-define( 'DB_NAME', 'mk-test' );
+define( 'DB_NAME', 'datenbankname_hier_einfuegen' );
 
 /**
  * Ersetze benutzername_hier_einfuegen
  * mit deinem Datenbank-Benutzernamen.
  */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'benutzername_hier_einfuegen' );
 
 /**
  * Ersetze passwort_hier_einfuegen mit deinem Datenbank-Passwort.
  */
-define( 'DB_PASSWORD', '1234' );
+define( 'DB_PASSWORD', 'passwort_hier_einfuegen' );
 
 /**
  * Ersetze localhost mit der Datenbank-Serveradresse.
