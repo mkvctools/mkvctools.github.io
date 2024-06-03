@@ -1,0 +1,19 @@
+.manager-img{
+    max-width: 500px;
+}
+
+.manager-chart-svg path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: path-animation 3s linear infinite;
+  }
+  
+
+  /* Füge hier die entsprechenden Verzögerungen für die restlichen Pfade hinzu */
+  
+  @keyframes path-animation {
+    to{
+        stroke-dashoffset: 0;
+    }
+  }
+  
