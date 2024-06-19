@@ -50,18 +50,20 @@ body{
     font-size: 1.2em;
     list-style: none;
     margin-left: 0 !important;
+    margin-bottom: 20px;
 }
 
 .ui-tabs.tab{
     background-color: #aaaaaa !important;
 }
 
-.tab-active{
+.tab-active, .c-tab-active{
     background-color: #ea5600 !important;
     color: white !important;
 }
 
-.tab-btn{
+
+.tab-btn, .c-tab-btn{
     width: 150px;
     height: 50px;
     background-color: #aaaaaa;
@@ -71,7 +73,10 @@ body{
     background-color: transparent;
 }
 
-
+.c-tab-btn{
+    width: 200px;
+    padding: 4;
+}
 .tab-link{
     color: #000;
     text-decoration: none;
@@ -85,6 +90,18 @@ body{
     justify-content: space-between;
     border-radius: 10px;
  
+}
+.complex-tool-container{
+    margin: 0 auto;
+    margin-top: 20px;
+    color:#000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+ 
+
 }
 
 @media screen and (max-width:1060px) {
@@ -104,13 +121,17 @@ body{
     .complex-main-area{
         width: 100% !important;
         margin-top: 100px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
    
     .science-sidebar{
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 600px !important;
         height: 200px;
     }
 
@@ -124,12 +145,13 @@ body{
     }  
 
     .range-container{
-        height: 200px;
+        height: 150px;
         width: 600px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-evenly;
+        align-items: space-evenly;
+        margin: 0 auto;
         margin-top: 20px;
 
     }
@@ -242,11 +264,13 @@ body{
 }
 
 .sidebar-title{
-
+    text-align: center;
+    font-size: 2rem;
 }
 
 .sidebar-title>ul{
     margin: 0 auto;
+    text-align: center;
 }
 
 .flex-column-center {
@@ -260,8 +284,13 @@ body{
 /*SIDEBAR SLIDER*/
 
 .range-container{
-    height: 200px;
-    max-width: 600px;
+    height: 150px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 #money-slider, #startuprange, #jahrrange, #probrange, #ticketrange{
@@ -343,7 +372,8 @@ input[type="range"] {
 
 .main-container{
 
-    max-width: 800px;
+    width: 800px;
+
     display: flex;
     justify-content: center;
     align-items: start;
@@ -393,45 +423,32 @@ input[type="range"] {
 
 
 #barchart-container{
-    width: 300px;
-    height: 200px;
+    height: 500px;
+    max-width: 800px;
     display: flex;
     justify-content: center;
 }
 #barchart{
-    max-width: 180px;
-    height: 200px;
+    max-width: 300px;
+    height: 500px;
 }
 
-#roichart{
-    max-height: 200px;
-}
-
-
-#linechart{
-    max-height: 200px;
-}
-
-#probchart{
-    width: 300px;
-    max-height: 200px;
+#roichart, #linechart, #probchart{
+    height: 500px !important;
+    max-width: 800px !important;
+    width: full;
 }
 
 
-.linechart-container, .probchart-container , .roichart-container{
-    height: 200px;
+
+.linechart-container, .probchart-container , .roichart-container{  
+    width: full;
+    max-width: 800px;
+    height: 500px !important;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.linechart-container,.roichart-container{
-    width: 300px;
-}
-
-.probchart-container, .roichart-container{
-    width: 300px;
-    height: 200px !important;
-    margin-left: 20px;
-    margin-right: 20px;
-}
 
 
 .section-2{
@@ -445,16 +462,16 @@ input[type="range"] {
 .complex-main-area{
     z-index: 0;
     height: 100%;
-    width: 70%;  
+    width: 100%;  
     display: block;  
 }
 
 .tvpi-container{
     display: flex;
-    justify-content: space-evenly;
+    margin: 0 auto;
+    justify-content: center;
     align-items: flex-start;
     flex-direction: row;
-    gap: 30px;
 }
 
 
@@ -466,4 +483,10 @@ input[type="range"] {
 #tvpi{
     text-align: center;
     margin-bottom: 20px;
+}
+
+.result-text{
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 5px;
 }

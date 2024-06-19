@@ -12,7 +12,7 @@
 <body>
 
 <div class="tool-wrapper">       
-            <div id="tabs">
+    <div id="tabs">
                 <ul class="tab-menu">
                     <li><a href="#tabs-1"><button class="tab-btn tab-active" id="simple-btn">Simpel</button></a></li>
                     <li><a href="#tabs-2"><button class="tab-btn" id="complex-btn">Scientific</button></a></li>
@@ -69,8 +69,8 @@
         </div>
         </div>
         <div id="tabs-2">
-            <div class="tool-container">
-                <div class="tool-sidebar science-sidebar">
+            <div class="complex-tool-container">
+                <div class="science-sidebar">
 
              <div class="range-container">
                 <h3 class="sidebar-title">Ticketgröße: <span class="ticket-feld" id="ticketfeld"></span> <span>€</span></h3>
@@ -88,6 +88,13 @@
                 </div>
 
                 <div class="complex-main-area">
+                    <div id="c-tabs">
+                        <ul class="tab-menu">
+                          <li><a href="#tabs-3"><button class="c-tab-btn c-tab-active">TVPI</button></a></li>
+                          <li><a href="#tabs-4"><button class="c-tab-btn">Gewinnwahrscheinlichkeit</button></a></li>
+                          <li><a href="#tabs-5"><button class="c-tab-btn">Ergebnis</button></a></li>
+                        </ul>
+                    <div id="tabs-3">  
                     <h2 id="tvpi">TVPI:</h2>
                     <p style="text-align: center;"><span class="orange-text">max: </span> <span id="tvpi-max" class="orange-text"></span> min: <span id="tvpi-min"></span></p>
                     <div class="tvpi-container">
@@ -97,25 +104,29 @@
 
 
                     <div class="linechart-container" id="linechart-container">
-                    <p class="line-feld" id="linefeld"></p>
+                    <p class="line-feld result-text" id="linefeld"></p>
                     <canvas id="linechart"></canvas>
                     </div>
                     </div>
+                    </div>
 
 
-                    <div class="section-2">
+
+                    <div class="section-2" id="tabs-4">
                     <div class="probchart-container" id="probchart-containter">
                         <h3 class="sidebar-title">Gewinnwahrscheinlichkeit: <i title="Dies ist eine Info"></i></h3>
-                        <p><span class="prob-feld" id="probfeld"></span> <span>%</span></p>
+                        <p class="result-text"><span class="prob-feld" id="probfeld"></span> <span>%</span></p>
                         <p><span></span> </p>
 
                         <canvas id="probchart"></canvas> 
                         </div>
+                    </div>
 
+                    <div class="section-3" id="tabs-5">
                         <div class="roichart-container" id="roichart-container">
                             <h3 class="sidebar-title">Ergebnis: </h3>
-                                <p><span class="roi-feld" id="roifeldmin"></span> <span>€ </span> </p>
-                                <p><span id="roifeldmax" class="orange-text"></span> <span class="orange-text">€</span></p>
+                                <p class="result-text"><span class="roi-feld" id="roifeldmin"></span> <span>€ </span> </p>
+                                <p class="result-text"><span id="roifeldmax" class="orange-text"></span> <span class="orange-text">€</span></p>
         
 
                             <canvas id="roichart"></canvas>
@@ -123,6 +134,7 @@
 
                         </div>
                 </div>
+                    </div>
                 </div>
         
         

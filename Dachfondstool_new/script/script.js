@@ -137,6 +137,11 @@ $('.tab-btn').on('click',function(){
     $(this).addClass('tab-active');
 })
 
+$('.c-tab-btn').on('click',function(){
+    $('.c-tab-active').removeClass('c-tab-active');
+    $(this).addClass('c-tab-active');
+})
+
 
 /*moneySlider.addEventListener("input",moneyAmount);
 moneySlider.addEventListener("input",moneyAmount);
@@ -157,6 +162,7 @@ btn_10_y.addEventListener("click",displayResult);
 /* Tabs */
 $( function() {
     $( "#tabs" ).tabs();
+    $(  "#c-tabs" ).tabs(); 
   } );
 
 
