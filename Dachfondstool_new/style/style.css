@@ -12,6 +12,7 @@ body{
     /*background-color: #03142e; */
     color: #fefefe;
     font-family: 'Helvetica',sans-serif;
+    background-color: white !important;
 }
 
 .orange-text{
@@ -306,6 +307,7 @@ input[type="range"] {
     cursor: pointer;
     outline: none;
     border-radius: 15px;
+
     height: 6px;
     background: orange; /* Farbe auf Orange ändern */
   }
@@ -322,6 +324,7 @@ input[type="range"] {
     border-radius: 50%;
     border: none;
     transition: .2s ease-in-out;
+    transform: translateY(-20px);
   }
   
   /* Thumb: Firefox */
