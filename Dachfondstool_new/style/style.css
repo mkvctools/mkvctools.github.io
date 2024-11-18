@@ -24,14 +24,16 @@ body{
 }
 
 .tool-wrapper{
-    max-width: 1200px;
+    max-width: 1400px;
     height:fit-content;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin: 0 auto;
     color: #000;
-    border: 10px;
+    border-radius: 10px;
+    background-color: #dddddd;
+    padding: 100px;
 }
 
 #tabs{
@@ -50,7 +52,7 @@ body{
     font-size: 1.2em;
     list-style: none;
     margin-left: 0 !important;
-    margin-bottom: 20px;
+    margin-bottom: 48px;
 }
 
 .ui-tabs.tab{
@@ -71,6 +73,7 @@ body{
     color: #000;
     border-radius: 5px;
     background-color: transparent;
+    font-size: 16px;
 }
 
 .c-tab-btn{
@@ -104,108 +107,28 @@ body{
 
 }
 
-@media screen and (max-width:1060px) {
-    body{
-        width: 100%;
-        
-    }
 
-    .tool-container{
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        width: 100%;
-        margin: 0 auto;
-    }
+.range-element{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
 
-    .complex-main-area{
-        width: 100% !important;
-        margin-top: 100px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-   
-    .science-sidebar{
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 600px !important;
-        height: 200px;
-    }
-
-    .tool-sidebar, .main-area, .main-container{
-        width: 100% !important;
-        margin: 0 auto !important;
-    }
-
-    .container-expected{
-        width: 100% !important;
-    }  
-
-    .range-container{
-        height: 150px;
-        width: 600px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: space-evenly;
-        margin: 0 auto;
-        margin-top: 20px;
-
-    }
-
-    .range-container h3{
-        line-height: 0.5;
-    }
+.science-sidebar{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 1800px !important;
+    height: 150px;
+    gap: 48px;
+    margin-bottom: 48px;
 
 }
 
-@media screen and (max-width:670px) 
-{
 
-    .tvpi-container{
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .section-2{
-       display: flex !important;
-       flex-direction: column !important;
-       justify-content: center !important;
-       align-items: center !important;
-       width: 95% !important;
-       margin: 0 auto !important;   
-    }
-    .roichart-container{
-        margin-top: 100px;
-    }
-    .roichart-container,.linechart-container,.probchart-container,.section-2,.tvpi-container{
-        width: 100%;
-    }
-    .range-container{
-        width: 400px;
-    }
-}
 
-@media screen and (max-width: 340px) {
-    .container-expected{
-        flex-direction: column !important;
-    }
-
-    .expected{
-        width: 80% !important;
-        height: 200px !important;
-    }
-
-    .range-container{
-        width: 300px;
-    }
-
-    
-}
 
 /*tool Top*/
 
@@ -238,7 +161,7 @@ body{
     margin-top: 20px;
 }
 
-.tool-propability ul, .tool-propability li, .investment-period ul, .investment-period li{
+.tool-propability div, .tool-propability ul, .tool-propability li, .investment-period div, .investment-period ul , .investment-period div li{
     list-style: none;
     width: 100%;
 }
@@ -255,6 +178,7 @@ body{
     background-color: #eeeeee;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 
@@ -265,7 +189,7 @@ body{
 
 .sidebar-title{
     text-align: center;
-    font-size: 2rem;
+    font-size: 36px !important;
 }
 
 .sidebar-title>ul{
@@ -283,17 +207,8 @@ body{
 
 /*SIDEBAR SLIDER*/
 
-.range-container{
-    height: 150px;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 20px;
-}
 
-#money-slider, #startuprange, #jahrrange, #probrange, #ticketrange{
+.money-slider, .money-slider div, #startuprange, #jahrrange, #probrange, #ticketrange{
     width: 100%;
 }
 
@@ -399,7 +314,7 @@ input[type="range"] {
 }
 
 .startups, .expected{
-    font-size: 48px;
+    font-size: 36px;
     text-align: start;
 }
 
@@ -421,35 +336,50 @@ input[type="range"] {
 
 /*Komplex Charts */
 
+#tabs-3,#tabs-4,#tabs-5, #tvpi, .win-prob-title, .result-title{
+    font-size: 32px;
+}
 
-#barchart-container{
-    height: 500px;
-    max-width: 800px;
+.barchart-container{
+    max-width: 600px;
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+    height: 600px !important;
+
 }
 #barchart{
-    max-width: 300px;
-    height: 500px;
+    max-width: 600px;
+    height: 100%;
+}
+#linechart{
+    height: 600px;
 }
 
-#roichart, #linechart, #probchart{
-    height: 500px !important;
-    max-width: 800px !important;
-    width: full;
-}
 
 
 
 .linechart-container, .probchart-container , .roichart-container{  
     width: full;
-    max-width: 800px;
-    height: 500px !important;
+    width: 600px;
+    height: 600px !important;
     margin: 0 auto;
     text-align: center;
 }
 
-
+.roichart-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 32px;
+}
+.roichart-params
+{
+    display: flex;
+    gap: 48px;
+    font-size:36px;
+}
 
 .section-2{
     padding: 1em;
@@ -472,6 +402,7 @@ input[type="range"] {
     justify-content: center;
     align-items: flex-start;
     flex-direction: row;
+    gap:48px;
 }
 
 
@@ -483,10 +414,22 @@ input[type="range"] {
 #tvpi{
     text-align: center;
     margin-bottom: 20px;
+
 }
 
 .result-text{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 36px;
     margin-bottom: 5px;
 }
+
+.prob-feld, .prob-feld + span{
+    color: #ea5600;
+}
+
+
+.tvpi-values,.result-text{
+    text-align: center;
+    color: #555555;
+}
+

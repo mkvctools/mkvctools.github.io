@@ -21,24 +21,24 @@ var roiFeldMax = document.getElementById("roifeldmax");
 const barDataX = ["X-Achse"];
 const barDataY = [startupRange.value];
 
-const inputMin = [0,0.07,0.17,0.51,0.93,1.10,1.13,1.19,1.27];
-const inputMax = [0,0.48,1.23,2.03,2.67,3.12,3.26,3.42,3.41];
+const inputMin = [0, 0.07, 0.17, 0.51, 0.93, 1.10, 1.13, 1.19, 1.27];
+const inputMax = [0, 0.48, 1.23, 2.03, 2.67, 3.12, 3.26, 3.42, 3.41];
 
-const inputProb =[0,0.1,0.5,0.9,0.95];
-const inputStartups = [0,10,50,200,400];
+const inputProb = [0, 0.1, 0.5, 0.9, 0.95];
+const inputStartups = [0, 10, 50, 200, 400];
 
- 
-const minArray = interpolationChart(inputMin,400);
-const maxArray =  interpolationChart(inputMax,400); 
+
+const minArray = interpolationChart(inputMin, 400);
+const maxArray = interpolationChart(inputMax, 400);
 
 //const minArray = interpolationChart(inputMin);
 //const maxArray = cubicInterpolation(inputMax);
 
-const roiArrayMin = roiArrayFill(minArray,ticketRange.value);
-const roiArrayMax = roiArrayFill(maxArray,ticketRange.value);
+const roiArrayMin = roiArrayFill(minArray, ticketRange.value);
+const roiArrayMax = roiArrayFill(maxArray, ticketRange.value);
 
 
-const probArray = interpolateArrays(inputProb,inputStartups);
+const probArray = interpolateArrays(inputProb, inputStartups);
 
 //const probArray = cubicProbInterpolation(inputProb);
 
@@ -46,13 +46,15 @@ const probArray = interpolateArrays(inputProb,inputStartups);
 //arrayMult(roiArrayMin,ticketRange.value);
 //arrayMult(roiArrayMax,ticketRange.value);
 
+//Font sizes
 
+var fontSizeAxes = 24;
 
 // Jeder Index des Arrays wird mit einem festen Wert multipliziert. 
 
-function roiArrayFill (inputArray,multValue){
+function roiArrayFill(inputArray, multValue) {
   let outputArray = [];
-  for(let i=0;i<inputArray.length;i++){
+  for (let i = 0; i < inputArray.length; i++) {
     outputArray.push(inputArray[i] * multValue);
   }
 
@@ -62,14 +64,14 @@ function roiArrayFill (inputArray,multValue){
 
 // Füllt die X-Werte des Grafen in ein Array.
 
-function fillX (startupCount){
+function fillX(startupCount) {
   var startupNum = [];
-    for(var i=0;i<=startupCount;i++){
-      startupNum.push(i);
-    }
-    console.log("X-Achsen-Wert:");
-    console.log(startupNum);
-    return startupNum;
+  for (var i = 0; i <= startupCount; i++) {
+    startupNum.push(i);
+  }
+  console.log("X-Achsen-Wert:");
+  console.log(startupNum);
+  return startupNum;
 }
 
 //Updatet die Charts
@@ -80,32 +82,32 @@ const updateChart = () => {
   let newTicketValue = document.getElementById("ticketrange").value;
   let newArrayMin = [];
   let newArrayMax = [];
-  
 
-  newArrayMin = roiArrayFill(minArray,newTicketValue);
-  newArrayMax = roiArrayFill(maxArray,newTicketValue);
+
+  newArrayMin = roiArrayFill(minArray, newTicketValue);
+  newArrayMax = roiArrayFill(maxArray, newTicketValue);
 
   console.log(newValue);
   barChart.data.datasets[0].data = [maxArray[newValue]];
   barChart.data.datasets[1].data = [minArray[newValue]];
   barChart.update();
 
-  lineChart.data.labels =  fillX(newValue);
-  lineChart.data.datasets[0].data = maxArray.slice(0,newValue+1);
-  lineChart.data.datasets[1].data = minArray.slice(0,newValue+1);
+  lineChart.data.labels = fillX(newValue);
+  lineChart.data.datasets[0].data = maxArray.slice(0, newValue + 1);
+  lineChart.data.datasets[1].data = minArray.slice(0, newValue + 1);
   lineChart.update();
 
   probChart.data.labels = fillX(newValue);
-  probChart.data.datasets[0].data = (probArray.slice(0,newValue+1));
+  probChart.data.datasets[0].data = (probArray.slice(0, newValue + 1));
   probChart.update();
 
 
-  roiChart.data.labels =fillX(newValue);
-  roiChart.data.datasets[0].data = newArrayMax.slice(0,newValue+1);
-  roiChart.data.datasets[1].data = newArrayMin.slice(0,newValue+1);
+  roiChart.data.labels = fillX(newValue);
+  roiChart.data.datasets[0].data = newArrayMax.slice(0, newValue + 1);
+  roiChart.data.datasets[1].data = newArrayMin.slice(0, newValue + 1);
   roiChart.update();
 
-  
+
   console.log("Im Prob Array Update Mode:")
   console.log(probArray[newValue]);
 
@@ -118,25 +120,25 @@ const updateChart = () => {
 //Zeigt die Werte an in einem Span Tag
 
 const displayRange = () => {
-startupFeld.innerText = startupRange.value;
-tvpiMaxValue.innerText =  maxArray[startupRange.value].toFixed(2);
-tvpiMinValue.innerText = minArray[startupRange.value].toFixed(2);
+  startupFeld.innerText = startupRange.value;
+  tvpiMaxValue.innerText = maxArray[startupRange.value].toFixed(2);
+  tvpiMinValue.innerText = minArray[startupRange.value].toFixed(2);
 }
 
 
 
 //Zeigt ddie Wahrscheinlichkeit in Prozent an
-const displayProb = (inputVal) =>{
+const displayProb = (inputVal) => {
 
-  if(inputVal<=1){
-  probFeld.innerText = (probArray[inputVal]).toFixed(2);
+  if (inputVal <= 1) {
+    probFeld.innerText = (probArray[inputVal]).toFixed(2);
   }
-  else if(inputVal==400){
+  else if (inputVal == 400) {
     probFeld.innerText = (95.000).toFixed(2);
 
   }
   else {
-  probFeld.innerText = (probArray[inputVal-1]).toFixed(2);
+    probFeld.innerText = (probArray[inputVal - 1]).toFixed(2);
   }
 
 }
@@ -145,22 +147,22 @@ const displayProb = (inputVal) =>{
 //Zeigt den Wert des Ticketgrößen Rangesliders an. 
 
 const displayTicket = () => {
-var ticketSize = parseInt (ticketRange.value);
-ticketFeld.innerText = ticketSize.toLocaleString('de-DE');
+  var ticketSize = parseInt(ticketRange.value);
+  ticketFeld.innerText = ticketSize.toLocaleString('de-DE');
 
 }
 
-const displayScientificResult = (newValue) =>{
+const displayScientificResult = (newValue) => {
   var resultMax = ticketRange.value * maxArray[newValue];
   var resultMin = ticketRange.value * minArray[newValue];
 
-  roiFeldMax.innerText = "Max: " + parseInt(resultMax).toLocaleString('de-De');
-  roiFeldMin.innerText = "Min: " + parseInt(resultMin).toLocaleString('de-De');
+  roiFeldMax.innerText = "max: " + parseInt(resultMax).toLocaleString('de-De');
+  roiFeldMin.innerText = "min: " + parseInt(resultMin).toLocaleString('de-De');
 
   console.log("im Scientific Result Feld");
-  
 
-  
+
+
 }
 
 //Führt Funktionen aus, sobald das Fenster gelanden wird. 
@@ -178,15 +180,15 @@ updateChart(startupRange.value);
 
 
 document.addEventListener("DOMContentLoaded", () => {
-displayRange(startupRange.value);
-displayTicket(ticketRange.value);
-displayProb(startupRange.value);
-displayScientificResult(startupRange.value);
-updateChart(startupRange.value);
+  displayRange(startupRange.value);
+  displayTicket(ticketRange.value);
+  displayProb(startupRange.value);
+  displayScientificResult(startupRange.value);
+  updateChart(startupRange.value);
 });
 
 
-ticketRange.addEventListener("input", () =>{
+ticketRange.addEventListener("input", () => {
   updateChart(startupRange.value);
   displayTicket(ticketRange.value);
   displayScientificResult(startupRange.value);
@@ -194,10 +196,10 @@ ticketRange.addEventListener("input", () =>{
 });
 
 
-startupRange.addEventListener("input",()=>{
+startupRange.addEventListener("input", () => {
   updateChart(startupRange.value);
-  fillX(startupRange.value); 
-  displayProb(startupRange.value); 
+  fillX(startupRange.value);
+  displayProb(startupRange.value);
   displayScientificResult(startupRange.value);
 
 });
@@ -207,68 +209,83 @@ startupRange.addEventListener("input",()=>{
 
 //Bar-Chart TVPI
 
-  const barChart = new Chart (
-    document.getElementById('barchart'),
-    {
-      type:'bar',
-      data:{
-        labels: barDataX,
-        datasets: [
-          {
-            label: 'Max',
-            data: maxArray[startupRange.value],
-            backgroundColor: '#EA5600',
+const barChart = new Chart(
+  document.getElementById('barchart'),
+  {
+    type: 'bar',
+    data: {
+      labels: barDataX,
+      datasets: [
+        {
+          label: 'Max',
+          data: maxArray[startupRange.value],
+          backgroundColor: '#EA5600',
 
-          },
-          {
-            label:'Min',
-            data: minArray[startupRange.value],
-            backgroundColor:'#AAAAAA',
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        aspectRatio: false,
-        barThickness: 20,
-        scales:{
-          y:{
-            suggestedMax: 4,
-            suggestedMin: 0,
-          }
         },
-        width: 200,
-        height: 100,
-      }
+        {
+          label: 'Min',
+          data: minArray[startupRange.value],
+          backgroundColor: '#555555',
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      aspectRatio: false,
+      barThickness: 20,
+      scales: {
+        x: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
+        },
+
+        y: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
+          suggestedMax: 4,
+          suggestedMin: 0,
+        }
+      },
+      width: 200,
+      height: 100,
     }
-  );
+  }
+);
 
+// LineChart TVPI
 
-
-const lineChart = new Chart (
+const lineChart = new Chart(
   document.getElementById('linechart'),
   {
-    type:'line',
-    data:{
+    type: 'line',
+    data: {
       labels: fillX(startupRange.value),
       datasets: [
         {
           label: 'Max',
-          data: maxArray.slice(0,startupRange.value+1),
+          data: maxArray.slice(0, startupRange.value + 1),
           backgroundColor: 'transparent',
           borderColor: '#EA5600',
           tension: 0.4
-          
+
         },
         {
           label: 'Min',
-          data: minArray.slice(0,startupRange.value+1),
+          data: minArray.slice(0, startupRange.value + 1),
           backgroundColor: 'transparent',
-          borderColor: '#FFFFFF',
+          borderColor: '#555555',
           cubicInterpolationMode: 'Monotone',
           tension: 0.8,
 
-        
+
         }
       ]
     },
@@ -277,8 +294,23 @@ const lineChart = new Chart (
       aspectRatio: true,
       lineThickness: 3,
       pointRadius: 0,
-      scales:{
-        y:{
+      scales: {
+        x: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
+        },
+
+        y: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
           suggestedMax: 4,
           suggestedMin: 0,
         }
@@ -287,21 +319,21 @@ const lineChart = new Chart (
   }
 );
 
-
-const probChart = new Chart (
+//Linechrt Gewinnwahrschinelichkeit 
+const probChart = new Chart(
   document.getElementById('probchart'),
   {
-    type:'line',
-    data:{
+    type: 'line',
+    data: {
       labels: fillX(startupRange.value),
       datasets: [
         {
-          label: 'Max',
-          data: probArray.slice(0,startupRange.value+1),
+          label: 'Gewinnwahrscheinlichkeit',
+          data: probArray.slice(0, startupRange.value + 1),
           backgroundColor: 'transparent',
           borderColor: '#EA5600',
           tension: 0.4
-          
+
         },
       ]
     },
@@ -310,42 +342,57 @@ const probChart = new Chart (
       aspectRatio: true,
       lineThickness: 3,
       pointRadius: 0,
-      scales:{
-        y:{
+      scales: {
+        x: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
+        },
+
+        y: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
           suggestedMax: 100,
           suggestedMin: 0,
         }
       },
     }
   }
-); 
+);
 
 
 //Zeigt an wie sich das Investment entwickelt.
 
 
-const roiChart = new Chart (
+const roiChart = new Chart(
   document.getElementById('roichart'),
   {
-    type:'line',
-    data:{
+    type: 'line',
+    data: {
       labels: fillX(startupRange.value),
       datasets: [
         {
-          label:'Max',
-          data: roiArrayMax.slice(0,startupRange.value+1),
+          label: 'Max',
+          data: roiArrayMax.slice(0, startupRange.value + 1),
           backgroundColor: 'transparent',
           borderColor: '#EA5600',
           tension: 0.4
-          
+
         },
         {
           label: 'Min',
-          data: roiArrayMin.slice(0,startupRange.value+1),
+          data: roiArrayMin.slice(0, startupRange.value + 1),
           backgroundColor: 'transparent',
-          borderColor: '#FFFFFF',
+          borderColor: '#555555',
           tension: 0.4
-          
+
         },
       ]
     },
@@ -354,8 +401,23 @@ const roiChart = new Chart (
       aspectRatio: true,
       lineThickness: 3,
       pointRadius: 0,
-      scales:{
-        y:{
+      scales: {
+        x: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
+        },
+
+        y: {
+          ticks:
+          {
+            font: {
+              size: fontSizeAxes,
+            },
+          },
           suggestedMax: 100,
           suggestedMin: 0,
         }
@@ -397,9 +459,10 @@ function cubicInterpolation(inputArray) {
     outputArray.push(a0 * t * t * t + a1 * t * t + a2 * t + a3);
   }
 
-console.log("KUBISCHeS ArraY: " + outputArray);}
+  console.log("KUBISCHeS ArraY: " + outputArray);
+}
 
-  // Interpolationen 
+// Interpolationen 
 
 function cubicProbInterpolation(inputArray) {
   const outputArray = [];
@@ -423,7 +486,7 @@ function cubicProbInterpolation(inputArray) {
     const a3 = y1;
     outputArray.push(a0 * t * t * t + a1 * t * t + a2 * t + a3);
   }
-  console.log ("Cubic Output Array : " + outputArray);
+  console.log("Cubic Output Array : " + outputArray);
 
   return outputArray;
 }
@@ -460,7 +523,7 @@ function interpolateArrays(inputProb, inputStartups) {
     const y = inputProb[startIndex] + deltaProb * ratio;
 
     // Setzen Sie den interpolierten Y-Wert im Ausgabe-Array an der aktuellen Indexposition
-    outputArray[i] = y*100;
+    outputArray[i] = y * 100;
   }
 
   // Rückgabe des Ausgabe-Arrays
@@ -472,7 +535,7 @@ function interpolateArrays(inputProb, inputStartups) {
 
 function interpolationChart(input, startupCount) {
   const output = [];
-  
+
   // Add first value of input array to output array
   output.push(input[0]);
 
@@ -485,7 +548,7 @@ function interpolationChart(input, startupCount) {
     const interpolatedValue = lowerValue + (upperValue - lowerValue) * (x - lowerIndex);
     output.push(interpolatedValue);
   }
-  
+
   // Add last value of input array to output array
   output.push(input[input.length - 1]);
 

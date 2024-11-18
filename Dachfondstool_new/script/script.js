@@ -4,9 +4,9 @@ var active = 'active';
 var yearActive = 'year-active';
 
 //Wähle den Button
-var btn10 = document.querySelector("#btn-10");
-var btn50 = document.querySelector("#btn-50");
-var btn90 = document.querySelector("#btn-90");
+var btn10 = document.querySelector(".btn-10");
+var btn50 = document.querySelector(".btn-50");
+var btn90 = document.querySelector(".btn-90");
 
 //Tab-Button
 
@@ -165,4 +165,63 @@ $( function() {
     $(  "#c-tabs" ).tabs(); 
   } );
 
+/*Accordion Mobile*/
 
+$(function() {
+    function createAccordions() {
+        if ($(window).width() < 800) {
+            /*$("#tool-probability-container").accordion();
+            $("#money-slider-container").accordion();
+            $("#investment-period-container").accordion(); */
+
+            $("#tool-top").accordion
+        } else {
+            // Destroy accordions if screen size is greater than 800px to avoid re-initialization issues
+           /* if ($("#tool-probability-container").hasClass("ui-accordion")) {
+                $("#tool-probability-container").accordion("destroy");
+            }
+            if ($("#money-slider-container").hasClass("ui-accordion")) {
+                $("#money-slider-container").accordion("destroy");
+            }
+            if ($("#investment-period-container").hasClass("ui-accordion")) {
+                $("#investment-period-container").accordion("destroy");
+            } */
+
+            if ($("#tool-top").hasClass("ui-accordion")){
+                $("#tool-top").accordion("destroy");
+            }  
+
+            if ($(window).width() >= 800) {
+
+                                // Nur das erste h3 und das erste div.content umwickeln
+                                var propTitle = $('.prob-title').first();
+                                var propContent = $('.prob-content').first();
+                                // Erzeuge ein neues div.wrapper
+                                var propWrapper = $('<div id="tool-probability-container" class="tool-propability"></div>');
+                                
+                               
+                                var moneyTitle = $('.money-title').first();
+                                var moneyContent = $('.money-content').first();
+                                // Erzeuge ein neues div.wrapper
+                                var moneyWrapper = $('<div id="money-slider-container" class="money-slider"></div>');
+                                
+                                
+                                var periodTitle = $('.period-title').first();
+                                var periodContent = $('.period-content').first();
+                                // Erzeuge ein neues div.wrapper
+                                var periodWrapper = $('<div class="investment-period" id="investment-period-container"></div>');
+              
+
+
+                                // Füge das erste h3 und das erste div.content in das neue div.wrapper ein
+                                propTitle.add(propContent).wrapAll(propWrapper);
+                                moneyTitle.add(moneyContent).wrapAll(moneyWrapper);
+                                periodTitle.add(periodContent).wrapAll(periodWrapper);
+
+            
+        }
+    }
+
+    createAccordions(); // Initial check
+    $(window).resize(createAccordions); // Check on resize
+}});
