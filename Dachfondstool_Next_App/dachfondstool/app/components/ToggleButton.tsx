@@ -10,8 +10,8 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ isActive, onClick, buttonTe
   return (
     <button
       onClick={onClick}
-      className={`w-24 px-2 py-2 rounded-sm text-white font-semibold transition-colors duration-300 ${
-        isActive ? "bg-orange-500" : "bg-gray-200 text-gray-800"
+      className={`w-24 px-2 py-2 rounded-md font-semibold transition-colors duration-300 ${
+        isActive ? "bg-[#ea5600] text-white" : "bg-gray-200 text-gray-800"
       }`}
     >
       {buttonText}

@@ -17,9 +17,9 @@ export default function Home() {
        <div>
 
        <TabGroup>
-      <TabList className="flex ">
-      <Tab className="data-[selected]:bg-[#fe5600] data-[selected]:text-white data-[hover]:underline px-8 py-4 border-gray-200">Simple</Tab>
-      <Tab className="data-[selected]:bg-[#fe5600] data-[selected]:text-white data-[hover]:underline px-8 py-4 border-gray-200">Scientific</Tab>
+      <TabList className="flex justify-evenly">
+      <Tab className="bg-gray-100 data-[selected]:bg-[#fe5600] data-[selected]:text-white data-[hover]:bg-gray-300 px-8 py-4 border-gray-200 w-full">Simple</Tab>
+      <Tab className="bg-gray-100 data-[selected]:bg-[#fe5600] data-[selected]:text-white data-[hover]:bg-gray-300 px-8 py-4 border-gray-200 w-full">Scientific</Tab>
       </TabList>
       <TabPanels>
         <TabPanel><ToolSimple/></TabPanel>

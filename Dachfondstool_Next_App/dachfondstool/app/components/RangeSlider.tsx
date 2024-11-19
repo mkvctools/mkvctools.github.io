@@ -10,10 +10,8 @@ interface RangeSliderProps {
 
 const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, step, value, onChange }) => {
   return (
-    <div className="range-slider">
-        <div className="slider-info flex justify-between text-sm text-gray-600 mt-2">
-        <span>{min}</span>
-        <span>{value}</span>
+    <div className="range-slider px-4">
+        <div className="slider-info flex justify-center text-3xl px-4 text-gray-600 mt-2">
         <span>{max}</span>
       </div>
       <input

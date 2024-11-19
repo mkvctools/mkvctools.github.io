@@ -15,14 +15,14 @@ const yearProps = [
 ];
 
 const ToolSimple = () => {
-  const [sliderValue, setSliderValue] = useState<number>(500000); // Initial Slider Value
+  const [moneySliderValue, setMoneySliderValue] = useState<number>(500000); // Initial Slider Value
   const [selectedPercent, setSelectedPercent] = useState<number>(90); // Default 90%
   const [selectedYear, setSelectedYear] = useState<number>(10); // Default 10 Jahre
   const [expectedResult, setExpectedResult] = useState<string>('');
   const [idealResult, setIdealResult] = useState<string>('');
 
-  const handleSliderChange = (newValue: number) => {
-    setSliderValue(newValue);
+  const handleMoneySliderChange = (newValue: number) => {
+    setMoneySliderValue(newValue);
   };
 
   const calculateResults = () => {
@@ -55,8 +55,8 @@ const ToolSimple = () => {
     const expectedReturnRate = expectedMap[rateKey] || 1;
     const idealReturnRate = idealMap[rateKey] || 1.25;
 
-    const expected = sliderValue * expectedReturnRate;
-    const ideal = sliderValue * idealReturnRate;
+    const expected = moneySliderValue * expectedReturnRate;
+    const ideal = moneySliderValue * idealReturnRate;
 
     setExpectedResult(expected.toLocaleString('de-DE'));
     setIdealResult(ideal.toLocaleString('de-DE'));
@@ -64,7 +64,7 @@ const ToolSimple = () => {
 
   useEffect(() => {
     calculateResults();
-  }, [sliderValue, selectedPercent, selectedYear]);
+  }, [moneySliderValue, selectedPercent, selectedYear]);
 
   return (
     <div>
@@ -79,8 +79,8 @@ const ToolSimple = () => {
           min={200000}
           max={5000000}
           step={10000}
-          value={sliderValue}
-          onChange={handleSliderChange}
+          value={moneySliderValue}
+          onChange={handleMoneySliderChange}
         />
         <ThreeButtonContainer
           props={yearProps}
