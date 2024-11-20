@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import '@/app/utils/chart-setup'
 
 interface BarChartProps {
   minValue: number;

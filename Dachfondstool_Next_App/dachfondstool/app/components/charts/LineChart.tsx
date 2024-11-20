@@ -1,6 +1,8 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
+import '@/app/utils/chart-setup'
+
 interface LineChartProps {
   startupValue: number;
   minArray: number[];

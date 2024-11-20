@@ -3,10 +3,9 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
-
+import ToolSimple from "./components/ToolSimple";
+import ToolScientific from "./components/ToolScientific";
 // Dynamisches Laden der Tools
-const ToolSimple = dynamic(() => import("./components/ToolSimple"), { ssr: false });
-const ToolScientific = dynamic(() => import("./components/ToolScientific"), { ssr: false });
 
 export default function Home() {
   const [value, setValue] = useState<number>(50);
