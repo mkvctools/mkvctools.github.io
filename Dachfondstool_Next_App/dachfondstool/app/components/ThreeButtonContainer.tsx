@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ToggleButton from './ToggleButton';
+import H3Component from './H3Component';
 
 interface ButtonContainerProps {
-  props: { buttonValue: number; buttonText: string }[];
+  props: { buttonValue: number; buttonText: string;}[];
   defaultValue?: number; // Standardwert beim Laden der Seite
   onClick?: (value: number) => void; // Callback für den Parent-Component
+  containerTitle?: string;
 }
 
-const ThreeButtonContainer: React.FC<ButtonContainerProps> = ({ props, defaultValue, onClick }) => {
+const ThreeButtonContainer: React.FC<ButtonContainerProps> = ({ props, defaultValue, onClick, containerTitle }) => {
   const [activeValue, setActiveValue] = useState<number | null>(null);
 
   // Setze den Default-Wert beim Laden der Seite
@@ -25,7 +27,8 @@ const ThreeButtonContainer: React.FC<ButtonContainerProps> = ({ props, defaultVa
 
   return (
     <div>
-      <div className="flex gap-2">
+      <H3Component title={containerTitle}/>
+      <div className="flex gap-2 justify-center">
         {/* Toggle Buttons mit spezifischen Werten */}
         {props.map((button, index) => (
           <ToggleButton

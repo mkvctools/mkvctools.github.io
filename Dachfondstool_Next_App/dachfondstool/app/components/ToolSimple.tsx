@@ -20,6 +20,7 @@ const ToolSimple = () => {
   const [selectedYear, setSelectedYear] = useState<number>(10); // Default 10 Jahre
   const [expectedResult, setExpectedResult] = useState<string>('');
   const [idealResult, setIdealResult] = useState<string>('');
+  const [startupAmount,setStartupAmount] = useState<string>('');
 
   const handleMoneySliderChange = (newValue: number) => {
     setMoneySliderValue(newValue);
@@ -67,13 +68,13 @@ const ToolSimple = () => {
   }, [moneySliderValue, selectedPercent, selectedYear]);
 
   return (
-    <div>
-      <h2>Tool Simple</h2>
-      <div className='flex justify-evenly'>
+    <div className='py-16 px-4 lg:px-24'>
+      <div className='flex justify-between'>
         <ThreeButtonContainer
           props={percentageProps}
           defaultValue={90}
           onClick={(value: number) => setSelectedPercent(value)}
+          containerTitle='Gewinnwahrscheinlichkeit'
         />
         <RangeSlider
           min={200000}
@@ -81,17 +82,19 @@ const ToolSimple = () => {
           step={10000}
           value={moneySliderValue}
           onChange={handleMoneySliderChange}
+          sliderTitle='Ihr Investment'
         />
         <ThreeButtonContainer
           props={yearProps}
           defaultValue={10}
           onClick={(value: number) => setSelectedYear(value)}
+          containerTitle='Investitionszeitraum'
         />
       </div>
       <div className='mt-4'>
-        <h3>Ergebnisse:</h3>
-        <p>Erwarteter Gewinn: {expectedResult} €</p>
-        <p>Idealer Gewinn: {idealResult} €</p>
+        <p className='text-2xl'>Anzahl der Startups: {startupAmount}</p>
+        <p className='text-2xl'>Erwarteter Gewinn: {expectedResult} €</p>
+        <p className='text-2xl'>Idealer Gewinn: {idealResult} €</p>
       </div>
     </div>
   );
