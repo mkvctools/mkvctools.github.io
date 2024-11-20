@@ -1,14 +1,11 @@
 "use client";
-
-import { useState } from "react";
-import dynamic from "next/dynamic";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import ToolSimple from "./components/ToolSimple";
 import ToolScientific from "./components/ToolScientific";
 // Dynamisches Laden der Tools
 
 export default function Home() {
-  const [value, setValue] = useState<number>(50);
+ // const [value, setValue] = useState<number>(50);
 
   return (
     <div className="min-w-screen min-h-screen">

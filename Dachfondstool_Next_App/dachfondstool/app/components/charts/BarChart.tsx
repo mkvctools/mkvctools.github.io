@@ -26,7 +26,12 @@ const BarChart: React.FC<BarChartProps> = ({ minValue, maxValue }) => {
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return(
+    <div>
+         <Bar data={data} options={options} />
+    </div>
+  )
+;
 };
 
 export default BarChart;

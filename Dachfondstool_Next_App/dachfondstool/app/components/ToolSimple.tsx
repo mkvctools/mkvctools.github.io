@@ -38,7 +38,6 @@ const ToolSimple = () => {
       '90-6': 1.6,
       '90-10': 2.36,
     };
-
     const idealMap: { [key: string]: number } = {
       '10-4': 0.8,
       '10-6': 0.5,
@@ -50,7 +49,19 @@ const ToolSimple = () => {
       '90-6': 2.03,
       '90-10': 3.12,
     };
+    const startupMap: { [key: string]: number } = {
+      '10-4': 10,
+      '10-6': 10,
+      '10-10': 10,
+      '50-4': 50,
+      '50-6': 50,
+      '50-10': 50,
+      '90-4': 200,
+      '90-6': 200,
+      '90-10': 200,
+    };
 
+    
 
     const rateKey = `${selectedPercent}-${selectedYear}`;
     const expectedReturnRate = expectedMap[rateKey] || 1;
@@ -61,6 +72,7 @@ const ToolSimple = () => {
 
     setExpectedResult(expected.toLocaleString('de-DE'));
     setIdealResult(ideal.toLocaleString('de-DE'));
+    setStartupAmount(startupMap[rateKey].toLocaleString('de-DE'));
   };
 
   useEffect(() => {

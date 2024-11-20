@@ -5,7 +5,6 @@ import {
   interpolationChart,
   interpolateArrays,
   roiArrayFill,
-  fillX,
 } from '../utils/interpolation';
 
 import BarChart from '@/app/components/charts/BarChart';
@@ -86,10 +85,12 @@ const ToolScientific = () => {
           {/* TVPI Tab */}
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+              <div className=''>
               <BarChart
                 minValue={minArray[startupSliderValue]}
                 maxValue={maxArray[startupSliderValue]}
               />
+              </div>
               <LineChart
                 startupValue={startupSliderValue}
                 minArray={minArray}

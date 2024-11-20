@@ -35,7 +35,8 @@ const LineChart: React.FC<LineChartProps> = ({ startupValue, minArray, maxArray 
     },
   };
 
-  return <Line data={data} options={options} />;
+  return (<div>
+    <Line data={data} options={options} /></div>);
 };
 
 export default LineChart;
