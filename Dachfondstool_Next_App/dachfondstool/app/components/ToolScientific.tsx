@@ -81,6 +81,7 @@ const ToolScientific = () => {
             Ergebnis
           </Tab>
         </TabList>
+
         <TabPanels>
           {/* TVPI Tab */}
           <TabPanel>
@@ -120,6 +121,7 @@ const ToolScientific = () => {
             </div>
           </TabPanel>
         </TabPanels>
+     
       </TabGroup>
     </div>
   );
