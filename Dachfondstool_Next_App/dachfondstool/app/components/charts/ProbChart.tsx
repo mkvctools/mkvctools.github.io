@@ -16,6 +16,7 @@ const ProbChart: React.FC<ProbChartProps> = ({ startupValue, probArray }) => {
         data: probArray.slice(0, startupValue + 1),
         borderColor: '#EA5600',
         tension: 0.4,
+        pointRadius: 0,
       },
     ],
   };

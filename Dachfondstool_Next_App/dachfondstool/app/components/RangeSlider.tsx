@@ -6,7 +6,7 @@ interface RangeSliderProps {
   step?: number;
   value: number;
   onChange: (value: number) => void;
-  sliderTitle?: string;
+  sliderTitle: string;
 }
 
 const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, step, value, onChange, sliderTitle}) => {
@@ -14,7 +14,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, step, value, onChan
     <div className="px-4">
       <H3Component title={sliderTitle}/>
         <div className="slider-info flex justify-center text-3xl px-4 text-gray-600 mt-2">
-        <span>{max}</span>
+        <p className='mb-4'>{value} <span className={`${sliderTitle.toLowerCase().includes("investment")? '':'hidden'}`}>€</span></p>
       </div>
       <input
         type="range"

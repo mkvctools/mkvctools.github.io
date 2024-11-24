@@ -39,8 +39,7 @@ const ThreeButtonContainer: React.FC<ButtonContainerProps> = ({ props, defaultVa
           />
         ))}
       </div>
-      {/* Anzeige des aktiven Wertes */}
-      <p className="mt-4">Ausgewählter Wert: {activeValue !== null ? activeValue : 'Keiner'}</p>
+    
     </div>
   );
 };

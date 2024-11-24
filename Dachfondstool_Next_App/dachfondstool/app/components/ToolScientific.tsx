@@ -40,46 +40,58 @@ const ToolScientific = () => {
     setStartupSliderValue(newValue);
   };
 
+  const tabList = [
+    {
+      tabKey: 1,
+      tabTitle: 'TVPI'
+    },
+    {
+      tabKey: 2,
+      tabTitle: 'Gewinnwahrscheinlichkeit'
+    },
+    {
+      tabKey: 3,
+      tabTitle: 'Ergebnis'
+    },
+  ]
+
   return (
     <div>
       {/* Range Sliders */}
-      <div className="flex w-full justify-center my-16 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-16 gap-8">
         <div>
-          <label className="block text-center font-medium">Investment (€)</label>
           <RangeSlider
             min={200000}
             max={5000000}
             step={10000}
             value={moneySliderValue}
             onChange={handleMoneySliderChange}
+            sliderTitle='Investment'
           />
-          <div className="text-center mt-2">{moneySliderValue.toLocaleString('de-DE')} €</div>
         </div>
         <div>
-          <label className="block text-center font-medium">Startups</label>
           <RangeSlider
             min={0}
             max={400}
             step={1}
             value={startupSliderValue}
             onChange={handleStartupSliderChange}
+            sliderTitle='Startups'
           />
-          <div className="text-center mt-2">{startupSliderValue} Startups</div>
         </div>
       </div>
 
       {/* Tabs */}
       <TabGroup>
-        <TabList className="flex justify-center gap-4">
-          <Tab className="data-[selected]:bg-[#fe5600] data-[selected]:text-white px-8 py-4 border-gray-200 rounded-full bg-gray-100 hover:bg-gray-200">
-            TVPI
+        <TabList className="flex justify-center md:gap-4">
+          {tabList.map((tab)=>(
+          
+            <Tab key={"tabNum-"+tab.tabKey} className="data-[selected]:bg-[#fe5600] w-full md:w-auto data-[selected]:text-white md:px-8 px-2 py-4 border-gray-200 md:rounded-full bg-gray-100 hover:bg-gray-200">
+            {tab.tabTitle}
           </Tab>
-          <Tab className="data-[selected]:bg-[#fe5600] data-[selected]:text-white px-8 py-4 border-gray-200 rounded-full bg-gray-100 hover:bg-gray-200">
-            Gewinnwahrscheinlichkeit
-          </Tab>
-          <Tab className="data-[selected]:bg-[#fe5600] data-[selected]:text-white px-8 py-4 border-gray-200 rounded-full bg-gray-100 hover:bg-gray-200">
-            Ergebnis
-          </Tab>
+            
+          ))}
+
         </TabList>
 
         <TabPanels>

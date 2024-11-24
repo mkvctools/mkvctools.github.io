@@ -17,12 +17,14 @@ const ROIChart: React.FC<ROIChartProps> = ({ startupValue, roiArrayMin, roiArray
         data: roiArrayMax.slice(0, startupValue + 1),
         borderColor: '#EA5600',
         tension: 0.4,
+        pointRadius: 0,
       },
       {
         label: 'Min ROI',
         data: roiArrayMin.slice(0, startupValue + 1),
-        borderColor: '#FFFFFF',
+        borderColor: '#CCC',
         tension: 0.4,
+        pointRadius: 0,
       },
     ],
   };

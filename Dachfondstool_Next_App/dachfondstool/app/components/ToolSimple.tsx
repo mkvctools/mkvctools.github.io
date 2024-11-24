@@ -81,7 +81,7 @@ const ToolSimple = () => {
 
   return (
     <div className='py-16 px-4 lg:px-24'>
-      <div className='flex justify-between'>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
         <ThreeButtonContainer
           props={percentageProps}
           defaultValue={90}
