@@ -21,8 +21,8 @@ const ToolScientific = () => {
   // Input data for interpolations
   const inputMin = [0, 0.07, 0.17, 0.51, 0.93, 1.10, 1.13, 1.19, 1.27];
   const inputMax = [0, 0.48, 1.23, 2.03, 2.67, 3.12, 3.26, 3.42, 3.41];
-  const inputProb = [0, 0.1, 0.5, 0.9, 0.95];
-  const inputStartups = [0, 10, 50, 200, 400];
+  const inputProb = [0, 0.1, 0.5, 0.7, 0.9, 0.95];
+  const inputStartups = [0, 10, 50, 100, 200, 400];
 
   // Interpolation results
   const minArray = interpolationChart(inputMin, 400);
