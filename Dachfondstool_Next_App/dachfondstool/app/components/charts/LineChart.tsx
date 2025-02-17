@@ -1,7 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-
-import '@/app/utils/chart-setup'
+import '@/app/utils/chart-setup';
 
 interface LineChartProps {
   startupValue: number;
@@ -10,19 +9,32 @@ interface LineChartProps {
 }
 
 const LineChart: React.FC<LineChartProps> = ({ startupValue, minArray, maxArray }) => {
+  const numPoints = 10; // Anzahl der Punkte, die im Chart angezeigt werden sollen
+  const step = Math.floor(startupValue / (numPoints - 1));
+
+  // X-Werte (gleichmäßig verteilt zwischen 0 und startupValue)
+  const labels = Array.from({ length: numPoints }, (_, i) => 
+    i === numPoints - 1 ? startupValue : i * step
+  );
+  
+
+  // Y-Werte an den entsprechenden X-Werten holen
+  const sampledMinArray = labels.map(x => minArray[x]);
+  const sampledMaxArray = labels.map(x => maxArray[x]);
+
   const data = {
-    labels: Array.from({ length: startupValue + 1 }, (_, i) => i),
+    labels: labels, // Reduzierte X-Werte
     datasets: [
       {
         label: 'Max',
-        data: maxArray.slice(0, startupValue + 1),
+        data: sampledMaxArray,
         borderColor: '#EA5600',
         tension: 0.4,
         pointRadius: 0
       },
       {
         label: 'Min',
-        data: minArray.slice(0, startupValue + 1),
+        data: sampledMinArray,
         borderColor: '#CCC',
         tension: 0.4,
         pointRadius: 0
@@ -37,8 +49,11 @@ const LineChart: React.FC<LineChartProps> = ({ startupValue, minArray, maxArray 
     },
   };
 
-  return (<div>
-    <Line data={data} options={options} /></div>);
+  return (
+    <div>
+      <Line data={data} options={options} />
+    </div>
+  );
 };
 
 export default LineChart;

@@ -17,12 +17,12 @@ import RangeSlider from './RangeSlider';
 const ToolScientific = () => {
   const [moneySliderValue, setMoneySliderValue] = useState<number>(500000); // Initial Money Slider Value
   const [startupSliderValue, setStartupSliderValue] = useState<number>(200); // Initial Startup Slider Value
-
+  const [investmentSliderVisible, setInvestmentSliderVisible] = useState(true);
   // Input data for interpolations
   const inputMin = [0, 0.07, 0.17, 0.51, 0.93, 1.10, 1.13, 1.19, 1.27];
   const inputMax = [0, 0.48, 1.23, 2.03, 2.67, 3.12, 3.26, 3.42, 3.41];
   const inputProb = [0, 0.1, 0.5, 0.7, 0.9, 0.95];
-  const inputStartups = [0, 10, 50, 100, 200, 400];
+  const inputStartups = [0, 10, 50, 100, 230, 400];
 
   // Interpolation results
   const minArray = interpolationChart(inputMin, 400);
@@ -30,6 +30,9 @@ const ToolScientific = () => {
   const probArray = interpolateArrays(inputProb, inputStartups);
   const roiArrayMin = roiArrayFill(minArray, moneySliderValue);
   const roiArrayMax = roiArrayFill(maxArray, moneySliderValue);
+
+  //const sampledMinArray = sampleArray(minArray,10);
+  //const sampledMaxArray = sampleArray(maxArray,10);
 
   // Handlers for sliders
   const handleMoneySliderChange = (newValue: number) => {
@@ -43,23 +46,26 @@ const ToolScientific = () => {
   const tabList = [
     {
       tabKey: 1,
-      tabTitle: 'TVPI'
+      tabTitle: 'TVPI',
+      investmentSliderVisible: true,
     },
     {
       tabKey: 2,
-      tabTitle: 'Gewinnwahrscheinlichkeit'
+      tabTitle: 'Gewinnwahrscheinlichkeit',
+      investmentSliderVisible: false,
     },
     {
       tabKey: 3,
-      tabTitle: 'Ergebnis'
+      tabTitle: 'Ergebnis',
+      investmentSliderVisible: true,
     },
   ]
 
   return (
     <div>
       {/* Range Sliders */}
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-16 gap-8">
-        <div>
+      <div className={`grid grid-cols-1 ${investmentSliderVisible?'md:grid-cols-2':''} justify-center my-16 gap-8`}>
+        <div className={`${investmentSliderVisible?'':'hidden'}`}>
           <RangeSlider
             min={200000}
             max={5000000}
@@ -67,6 +73,7 @@ const ToolScientific = () => {
             value={moneySliderValue}
             onChange={handleMoneySliderChange}
             sliderTitle='Investment'
+            className='max-w-[400px] mx-auto'
           />
         </div>
         <div>
@@ -77,6 +84,7 @@ const ToolScientific = () => {
             value={startupSliderValue}
             onChange={handleStartupSliderChange}
             sliderTitle='Startups'
+            className={`${investmentSliderVisible?'max-w-[400px] mx-auto':'max-w-[600px] mx-auto'}`}
           />
         </div>
       </div>
@@ -86,7 +94,8 @@ const ToolScientific = () => {
         <TabList className="flex justify-center md:gap-4">
           {tabList.map((tab)=>(
           
-            <Tab key={"tabNum-"+tab.tabKey} className="data-[selected]:bg-[#fe5600] w-full md:w-auto data-[selected]:text-white md:px-8 px-2 py-4 border-gray-200 md:rounded-full bg-gray-100 hover:bg-gray-200">
+            <Tab key={"tabNum-"+tab.tabKey} className="data-[selected]:bg-[#fe5600] w-full md:w-auto data-[selected]:text-white md:px-8 px-2 py-4 border-gray-200 md:rounded-full bg-gray-100 hover:bg-gray-200"
+            onClick={()=>{setInvestmentSliderVisible(tab.investmentSliderVisible)}}>
             {tab.tabTitle}
           </Tab>
             

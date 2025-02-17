@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import '@/app/utils/chart-setup'
+import '@/app/utils/chart-setup';
 
 interface ProbChartProps {
   startupValue: number;
@@ -8,12 +8,21 @@ interface ProbChartProps {
 }
 
 const ProbChart: React.FC<ProbChartProps> = ({ startupValue, probArray }) => {
+  const numPoints = 10; // Anzahl der Punkte für den Chart
+  const step = startupValue / numPoints;
+
+  // Gleichmäßig verteilte X-Werte
+  const labels = Array.from({ length: numPoints + 1 }, (_, i) => Math.round(i * step));
+
+  // Y-Werte holen (fix: Letzter Wert bleibt stabil)
+  const sampledProbArray = labels.map(x => probArray[Math.min(x, probArray.length - 1)]);
+
   const data = {
-    labels: Array.from({ length: startupValue + 1 }, (_, i) => i),
+    labels: labels, // Reduzierte X-Werte
     datasets: [
       {
         label: 'Probability',
-        data: probArray.slice(0, startupValue + 1),
+        data: sampledProbArray,
         borderColor: '#EA5600',
         tension: 0.4,
         pointRadius: 0,

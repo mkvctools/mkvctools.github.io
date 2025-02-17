@@ -7,11 +7,12 @@ interface RangeSliderProps {
   value: number;
   onChange: (value: number) => void;
   sliderTitle: string;
+  className: string;
 }
 
-const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, step, value, onChange, sliderTitle}) => {
+const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, step, value, onChange, sliderTitle, className}) => {
   return (
-    <div className="px-4 flex flex-col items-center justify-center">
+    <div className={`px-4 flex flex-col items-center justify-center ${className}`}>
       <H3Component title={sliderTitle}/>
         <div className="slider-info flex justify-center text-3xl px-4 text-gray-600 mt-2">
         <p className='mb-4 text-2xl text-black'>{value} <span className={`${sliderTitle.toLowerCase().includes("investment")? '':'hidden'}`}>€</span></p>

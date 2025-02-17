@@ -95,6 +95,7 @@ const ToolSimple = () => {
           value={moneySliderValue}
           onChange={handleMoneySliderChange}
           sliderTitle='Ihr Investment'
+          className=''
         />
         <ThreeButtonContainer
           props={yearProps}
